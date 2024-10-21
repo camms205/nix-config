@@ -13,7 +13,6 @@ with lib;
     inputs.self.nixosModules.default
   ];
 
-  facter.reportPath = ./facter.json;
   fileSystems."/nix/persist".neededForBoot = true;
 
   camms = {
