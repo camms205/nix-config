@@ -31,10 +31,14 @@ with lib;
     hostId = "707378ff";
   };
 
-  boot.loader.grub = {
-    efiSupport = true;
-    efiInstallAsRemovable = true;
+  boot = {
+    initrd.systemd.enable = true;
+    loader = {
+      systemd-boot.enable = true;
+      efi.canTouchEfiVariables = true;
+    };
   };
+
   services.openssh.enable = true;
 
   environment.systemPackages = with pkgs; [
