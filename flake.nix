@@ -3,9 +3,8 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-
-    blueprint.url = "github:numtide/blueprint";
-    blueprint.inputs.nixpkgs.follows = "nixpkgs";
+    flakelight.url = "github:nix-community/flakelight";
+    flakelight.inputs.nixpkgs.follows = "nixpkgs";
 
     nixos-facter-modules.url = "github:numtide/nixos-facter-modules";
 
@@ -37,13 +36,15 @@
   };
 
   outputs =
-    inputs:
-    inputs.blueprint {
-      inherit inputs;
-      systems = [
-        "aarch64-linux"
-        "x86_64-linux"
-      ];
-      nixpkgs.config.allowUnfree = true;
-    };
+    { flakelight, ... }@inputs:
+    flakelight ./. (
+      { outputs, ... }@flake:
+      {
+        inherit inputs;
+        withOverlays = [
+          inputs.poetry2nix.overlays.default
+          (_: _: { inherit (outputs) nixosConfigurations; })
+        ];
+      }
+    );
 }
