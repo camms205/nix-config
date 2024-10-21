@@ -6,9 +6,6 @@
   ...
 }:
 with lib;
-let
-  user = "cameron";
-in
 {
   imports = [
     ./hardware-configuration.nix
@@ -22,18 +19,14 @@ in
       "networkmanager"
       "libvirtd"
     ];
+    user.name = "cameron";
     variables = {
-      username = "${user}";
       ewwDir = ./eww;
       flakeDir = "/home/cameron/dotfiles/nix";
     };
   };
 
-  boot = {
-    loader.systemd-boot.enable = true;
-    loader.efi.canTouchEfiVariables = true;
-    binfmt.emulatedSystems = [ "aarch64-linux" ];
-  };
+  boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
   nix.settings.extra-platforms = config.boot.binfmt.emulatedSystems;
 
   networking.hostName = "cam-laptop";

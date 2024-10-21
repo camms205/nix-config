@@ -24,7 +24,7 @@ with lib;
     home.enable = true;
     home.path = ./home.nix;
     impermanence.enable = true;
-    variables.username = "cameron";
+    user.name = "cameron";
   };
 
   networking = {

@@ -16,7 +16,7 @@ with lib;
     enable = mkEnableOption "home";
     name = mkOption {
       type = types.str;
-      default = config.camms.variables.username;
+      default = config.camms.user.name;
     };
     path = mkOption {
       type = types.nullOr types.path;

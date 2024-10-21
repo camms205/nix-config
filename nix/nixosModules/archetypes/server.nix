@@ -1,7 +1,6 @@
 {
   lib,
   pkgs,
-  inputs,
   config,
   ...
 }:
@@ -13,8 +12,9 @@ with lib;
   options.camms.archetypes.server.enable = mkEnableOption "server archetype";
 
   config = mkIf cfg.enable {
-    camms.suites = {
-      common.enable = true;
+    camms = {
+      suites.common.enable = true;
+      systemd-boot.enable = true;
     };
   };
 }

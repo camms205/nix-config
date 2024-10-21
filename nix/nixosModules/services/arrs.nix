@@ -48,7 +48,7 @@ with lib;
     };
     users.groups.${group} = {
       gid = 10000;
-      members = [ config.camms.variables.username ];
+      members = [ config.camms.user.name ];
     };
 
     sops.secrets =

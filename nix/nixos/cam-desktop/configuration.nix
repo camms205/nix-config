@@ -25,29 +25,22 @@ in
     archetypes.workstation.enable = true;
     home.path = ./home.nix;
     services.arrs.enable = true;
-    user.extraGroups = [
-      "networkmanager"
-      "libvirtd"
-      "dialout"
-      "podman"
-    ];
+    user = {
+      name = user;
+      extraGroups = [
+        "networkmanager"
+        "libvirtd"
+        "dialout"
+        "podman"
+      ];
+    };
     variables = {
-      username = "${user}";
       ewwDir = ./eww;
       flakeDir = "/home/cameron/.dotfiles/nix";
     };
   };
 
-  boot = {
-    loader.systemd-boot.enable = true;
-    loader.efi.canTouchEfiVariables = true;
-    supportedFilesystems = [
-      "btrfs"
-      "zfs"
-    ];
-    zfs.forceImportRoot = false;
-    binfmt.emulatedSystems = [ "aarch64-linux" ];
-  };
+  boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
   nix.settings.extra-platforms = config.boot.binfmt.emulatedSystems;
 
   networking = {
@@ -130,7 +123,6 @@ in
     blueman.enable = true;
     fwupd.enable = true;
     logrotate.checkConfig = false;
-    openssh.enable = true;
     pipewire = {
       enable = true;
       alsa = {

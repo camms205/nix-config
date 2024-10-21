@@ -13,6 +13,9 @@ with lib;
 {
   options.camms.user = {
     enable = mkEnableOption "user";
+    name = mkOption {
+      type = types.str;
+    };
     admin = mkOption {
       type = types.bool;
       default = true;

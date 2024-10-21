@@ -16,7 +16,7 @@ with lib;
 
   config.wsl = mkIf cfg.enable {
     enable = true;
-    defaultUser = config.camms.variables.username;
+    defaultUser = config.camms.user.name;
     useWindowsDriver = true;
   };
 }

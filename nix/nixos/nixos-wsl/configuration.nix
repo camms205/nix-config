@@ -19,8 +19,8 @@ with lib;
     suites.common.enable = true;
     wsl.enable = true;
     stylix.enable = true;
+    user.name = "cshearer";
     variables = {
-      username = "cshearer";
       flakeDir = "/home/cshearer/dotfiles/nix";
     };
   };
