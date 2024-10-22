@@ -22,6 +22,7 @@ with lib;
       path = ./facter.json;
     };
     home.enable = true;
+    home.path = ./home.nix;
     impermanence.enable = true;
     variables.username = "cameron";
   };
