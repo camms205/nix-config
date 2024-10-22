@@ -32,7 +32,10 @@ with lib;
   };
 
   boot = {
-    initrd.systemd.enable = true;
+    initrd = {
+      availableKernelModules = [ "virtio_scsi" ];
+      systemd.enable = true;
+    };
     loader = {
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
