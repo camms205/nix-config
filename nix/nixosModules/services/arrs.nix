@@ -37,12 +37,6 @@ with lib;
         "RIVEN_UPDATERS_JELLYFIN_URL" = "http://localhost:8096";
         "RIVEN_CONTENT_OVERSEERR_URL" = "http://localhost:5055";
       };
-      frontend.environment = {
-        "BACKEND_URL" = "http://localhost:8080";
-        "DATABASE_URL" = "postgres://postgres:postgres@localhost/riven";
-        "DIALECT" = "postgres";
-        "ORIGIN" = "http://localhost:3000";
-      };
     };
 
     users.users.${user} = {
@@ -68,30 +62,6 @@ with lib;
         "media/zurg-config.yml" = file;
       };
 
-    virtualisation = {
-      podman.autoPrune.enable = true;
-      oci-containers.containers."riven-db" = {
-        image = "postgres:16.3-alpine3.20";
-        environment = {
-          "PGDATA" = "/var/lib/postgresql/data/pgdata";
-          "POSTGRES_DB" = "riven";
-          "POSTGRES_PASSWORD" = "postgres";
-          "POSTGRES_USER" = "postgres";
-        };
-        volumes = [
-          "/var/lib/riven/riven-db:/var/lib/postgresql/data/pgdata:rw"
-        ];
-        log-driver = "journald";
-        extraOptions = [
-          "--health-cmd=pg_isready -U postgres"
-          "--health-interval=10s"
-          "--health-retries=5"
-          "--health-timeout=5s"
-          "--network=host"
-        ];
-      };
-    };
-
     services = {
       jellyfin = {
         enable = true;
@@ -111,8 +81,7 @@ with lib;
           };
         in
         {
-          "riven" = afterRclone;
-          "riven-frontend" = afterRclone;
+          "podman-riven-frontend" = afterRclone;
           "rclone" = {
             description = "rclone mount for zurg";
             after = [ "zurg.service" ];
@@ -140,13 +109,6 @@ with lib;
               WorkingDirectory = "/var/lib/zurg";
               Restart = "on-failure";
             };
-          };
-          "podman-riven-db" = {
-            serviceConfig = {
-              Restart = lib.mkOverride 500 "no";
-            };
-            partOf = [ "arrs-root.target" ];
-            wantedBy = [ "arrs-root.target" ];
           };
           jellyfin = afterRclone;
           jellyseerr = afterRclone;

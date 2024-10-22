@@ -30,9 +30,6 @@
       home-manager.follows = "home-manager";
       nixpkgs.follows = "nixpkgs";
     };
-
-    poetry2nix.url = "github:nix-community/poetry2nix";
-    poetry2nix.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =
@@ -41,10 +38,7 @@
       { outputs, ... }@flake:
       {
         inherit inputs;
-        withOverlays = [
-          inputs.poetry2nix.overlays.default
-          (_: _: { inherit (outputs) nixosConfigurations; })
-        ];
+        withOverlays = [ (_: _: { inherit (outputs) nixosConfigurations; }) ];
       }
     );
 }
