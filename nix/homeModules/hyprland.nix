@@ -210,7 +210,6 @@ with lib;
       waypipe
       wl-clipboard
       xdg-desktop-portal-hyprland
-      zoom-us
     ];
     services.playerctld.enable = true;
     # home.file.".config/hypr/hyprpaper.conf".text = ''

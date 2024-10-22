@@ -58,7 +58,6 @@ with lib;
         ];
         dependsOn = [ "riven-db" ];
         log-driver = "journald";
-        user = "${cfg.user}:${cfg.group}";
         extraOptions = [
           "--health-cmd=curl -s http://localhost:8080 >/dev/null || exit 1"
           "--health-interval=30s"

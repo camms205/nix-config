@@ -30,6 +30,8 @@ with lib;
       inherit user group;
       envFile = config.sops.secrets."media/riven.env".path;
       environment = {
+        "PUID" = "${uid}";
+        "PGID" = "${gid}";
         "RIVEN_FORCE_ENV" = "true";
         "RIVEN_SYMLINK_RCLONE_PATH" = "${path}/remote/realdebrid/torrents";
         "RIVEN_SYMLINK_LIBRARY_PATH" = "${path}/jellyfin";
@@ -81,6 +83,8 @@ with lib;
           };
         in
         {
+          "podman-riven" = afterRclone;
+          "podman-riven-db" = afterRclone;
           "podman-riven-frontend" = afterRclone;
           "rclone" = {
             description = "rclone mount for zurg";
