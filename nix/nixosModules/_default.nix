@@ -21,6 +21,9 @@ with lib;
   config = mkIf cfg.enable {
     # services.automatic-timezoned.enable = true;
 
-    programs.fish.enable = true;
+    programs = {
+      dconf.enable = true;
+      fish.enable = true;
+    };
   };
 }

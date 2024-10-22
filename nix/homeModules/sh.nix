@@ -24,6 +24,7 @@ with lib;
       entr
       eza
       fd
+      nix-output-monitor
       nix-tree
       ripdrag
       socat
