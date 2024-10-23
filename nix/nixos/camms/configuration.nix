@@ -43,20 +43,14 @@ with lib;
     };
   };
 
-  services = {
-    openssh.enable = true;
-    technitium-dns-server.enable = true;
-  };
+  services.technitium-dns-server.enable = true;
 
   environment.systemPackages = with pkgs; [
     curl
     vim
   ];
+
   documentation.man.generateCaches = false;
-  users.users.root.openssh.authorizedKeys.keys = [
-    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOTr+IuOrJF+tNJHjwHaNTMnV1PwbvuO+Z1XeXXIETeq cshearer@nixos-wsl"
-    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJMumZUYRobSetz6wCJAIxryfbTUNf6fnGZU8P5RCcsW cameron@cam-desktop"
-  ];
 
   system.stateVersion = "24.05";
 }

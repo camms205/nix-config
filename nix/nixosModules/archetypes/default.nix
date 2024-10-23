@@ -1,6 +1,4 @@
+{ inputs, ... }:
 {
-  imports = [
-    ./server.nix
-    ./workstation.nix
-  ];
+  imports = inputs.self.lib.defaultImports ./.;
 }

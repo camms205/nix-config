@@ -35,8 +35,5 @@ with lib;
 
   fonts.packages = with pkgs; [ fira-code-nerdfont ];
 
-  services = {
-    avahi.enable = true;
-    openssh.enable = true;
-  };
+  services.avahi.enable = true;
 }

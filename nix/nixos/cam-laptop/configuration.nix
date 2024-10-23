@@ -82,7 +82,6 @@ with lib;
     blueman.enable = true;
     fwupd.enable = true;
     logrotate.checkConfig = false;
-    openssh.enable = true;
     pipewire = {
       enable = true;
       alsa = {

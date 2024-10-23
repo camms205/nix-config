@@ -1,6 +1,4 @@
+{ inputs, ... }:
 {
-  imports = [
-    ./common.nix
-    ./desktop.nix
-  ];
+  imports = inputs.self.lib.defaultImports ./.;
 }

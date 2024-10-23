@@ -9,8 +9,11 @@ with lib;
   config = mkIf cfg.enable {
     camms = {
       nix.enable = mkDefault true;
-      services.cachix.enable = mkDefault true;
-      services.tailscale.enable = mkDefault true;
+      services = {
+        cachix.enable = mkDefault true;
+        ssh.enable = mkDefault true;
+        tailscale.enable = mkDefault true;
+      };
       sops.enable = mkDefault true;
       user.enable = mkDefault true;
     };

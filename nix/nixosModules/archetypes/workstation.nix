@@ -13,9 +13,12 @@ with lib;
   options.camms.archetypes.workstation.enable = mkEnableOption "workstation archetype";
 
   config = mkIf cfg.enable {
-    camms.suites = {
-      common.enable = true;
-      desktop.enable = true;
+    camms = {
+      suites = {
+        common.enable = true;
+        desktop.enable = true;
+      };
+      systemd-boot.enable = true;
     };
   };
 }

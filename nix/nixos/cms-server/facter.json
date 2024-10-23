@@ -1732,7 +1732,7 @@
         "resources": [
           {
             "type": "hwaddr",
-            "address": 52
+            "address": 97
           },
           {
             "type": "irq",
@@ -2009,7 +2009,7 @@
         "resources": [
           {
             "type": "hwaddr",
-            "address": 52
+            "address": 97
           },
           {
             "type": "phwaddr",
