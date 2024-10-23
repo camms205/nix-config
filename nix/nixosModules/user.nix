@@ -43,7 +43,7 @@ with lib;
       {
         mutableUsers = false;
         inherit (cfg) defaultUserShell;
-        users.${config.camms.variables.username} = {
+        users.${config.camms.user.name} = {
           isNormalUser = true;
           uid = 1000;
           extraGroups = optional (cfg.admin) "wheel" ++ cfg.extraGroups;

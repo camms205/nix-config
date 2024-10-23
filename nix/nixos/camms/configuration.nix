@@ -43,7 +43,10 @@ with lib;
     };
   };
 
-  services.openssh.enable = true;
+  services = {
+    openssh.enable = true;
+    technitium-dns-server.enable = true;
+  };
 
   environment.systemPackages = with pkgs; [
     curl

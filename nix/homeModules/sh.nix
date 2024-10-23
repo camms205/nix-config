@@ -68,8 +68,8 @@ with lib;
       git = {
         enable = true;
         delta.enable = true;
-        userName = "darknebula05";
-        userEmail = "camms205@aol.com";
+        userName = "camms205";
+        userEmail = "camms205@proton.me";
         extraConfig = {
           init.defaultBranch = "main";
         };
