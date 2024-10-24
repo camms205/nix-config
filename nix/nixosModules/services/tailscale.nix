@@ -17,6 +17,7 @@ with lib;
       enable = true;
       authKeyFile = config.sops.secrets.tailscale.path;
       useRoutingFeatures = "both";
+      openFirewall = true;
     };
 
     sops.secrets."tailscale" = { };
