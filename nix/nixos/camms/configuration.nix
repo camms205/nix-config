@@ -43,7 +43,7 @@ with lib;
     };
   };
 
-  services.technitium-dns-server.enable = true;
+  services.adguardhome.enable = true;
 
   environment.systemPackages = with pkgs; [
     curl
