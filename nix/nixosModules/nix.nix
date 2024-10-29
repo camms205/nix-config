@@ -24,13 +24,11 @@ with lib;
           "@wheel"
         ];
         substituters = [
-          "https://cache.garnix.io"
           "https://nixpkgs-unfree.cachix.org"
           "https://nix-community.cachix.org"
           "https://darknebula05.cachix.org"
         ];
         trusted-public-keys = [
-          "cache.garnix.io:CTFPyKSLcx5RMJKfLo5EEPUObbA78b0YQ2DTCJXqr9g="
           "nixpkgs-unfree.cachix.org-1:hqvoInulhbV4nJ9yJOEr+4wxhDV4xq2d1DK7S6Nj6rs="
           "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
           "darknebula05.cachix.org-1:DYYMiJaS92u6Iz/pXpuLlGqfqp4iR/WO535nBUnvxhU="

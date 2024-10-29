@@ -12,7 +12,12 @@ with lib;
 {
   options.camms.services.cachix.enable = mkEnableOption "cachix";
 
-  config = {
-    services.cachix-agent.enable = mkIf cfg.enable true;
+  config = mkIf cfg.enable {
+    services.cachix-agent.enable = true;
+
+    sops.secrets = mkIf config.camms.sops.enable {
+      "cachix-agent".path = "/etc/cachix-agent.token";
+      "cachix".owner = "${config.camms.user.name}";
+    };
   };
 }

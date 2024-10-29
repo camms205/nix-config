@@ -56,6 +56,7 @@ with lib;
           ts-exit = ''
             tailscale status --peers --json | nix run nixpkgs#jq -- '.ExitNodeStatus.ID as $node_id | .Peer[] | select(.ID==$node_id) | .HostName'
           '';
+          cachix = ''env -S (cat /run/secrets/cachix) cachix $argv'';
         };
         shellAliases = {
           diff = "batdiff";
