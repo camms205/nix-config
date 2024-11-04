@@ -7,7 +7,6 @@
 }:
 let
   cfg = config.camms.user;
-  sops = config.camms.sops.enable;
 in
 with lib;
 {
@@ -55,7 +54,7 @@ with lib;
           openssh.authorizedKeys.keyFiles = keys;
         };
       };
-    camms.user.hashedPasswordFile = mkIf sops (mkDefault config.sops.secrets.hashed_password.path);
-    sops.secrets.hashed_password.neededForUsers = mkIf sops true;
+    camms.user.hashedPasswordFile = mkDefault config.sops.secrets.hashed_password.path;
+    sops.secrets.hashed_password.neededForUsers = true;
   };
 }

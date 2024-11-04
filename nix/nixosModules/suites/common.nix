@@ -14,7 +14,6 @@ with lib;
         ssh.enable = mkDefault true;
         tailscale.enable = mkDefault true;
       };
-      sops.enable = mkDefault true;
       user.enable = mkDefault true;
     };
   };

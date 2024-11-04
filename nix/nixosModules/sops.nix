@@ -14,7 +14,6 @@ with lib;
   imports = [ inputs.sops-nix.nixosModules.sops ];
 
   options.camms.sops = {
-    enable = mkEnableOption "sops";
     sshKeyPaths = mkOption {
       type = with types; listOf str;
       default =
@@ -33,7 +32,7 @@ with lib;
     };
   };
 
-  config = mkIf cfg.enable {
+  config = {
     sops = {
       inherit (cfg) defaultSopsFile;
       age = {

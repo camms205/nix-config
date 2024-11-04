@@ -15,7 +15,7 @@ with lib;
   config = mkIf cfg.enable {
     services.cachix-agent.enable = true;
 
-    sops.secrets = mkIf config.camms.sops.enable {
+    sops.secrets = {
       "cachix-agent".path = "/etc/cachix-agent.token";
       "cachix".owner = "${config.camms.user.name}";
     };

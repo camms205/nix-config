@@ -59,7 +59,7 @@ with lib;
           sopsFile = "${inputs.self}/secrets/arrs.yaml";
         };
       in
-      mkIf config.camms.sops.enable {
+      {
         "media/riven.env" = file;
         "media/zurg-config.yml" = file;
       };
