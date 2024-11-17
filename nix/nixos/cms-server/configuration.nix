@@ -19,10 +19,14 @@
     home.enable = true;
     home.path = ./home.nix;
     impermanence.enable = true;
+    services.arrs.enable = true;
     user.name = "cameron";
   };
 
-  services.xserver.videoDrivers = [ "nvidia" ];
+  services = {
+    xserver.videoDrivers = [ "nvidia" ];
+    logind.lidSwitch = "ignore";
+  };
 
   hardware.nvidia = {
     modesetting.enable = true;

@@ -24,7 +24,6 @@ in
     };
     archetypes.workstation.enable = true;
     home.path = ./home.nix;
-    services.arrs.enable = true;
     user = {
       name = user;
       extraGroups = [
