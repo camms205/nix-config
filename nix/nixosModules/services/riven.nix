@@ -94,6 +94,9 @@ with lib;
           "DIALECT" = "postgres";
           "ORIGIN" = "http://localhost:3000";
         };
+        volumes = [
+          "${cfg.dataDir}/frontend:/riven/config:rw"
+        ];
         dependsOn = [ "riven" ];
         log-driver = "journald";
         extraOptions = [ "--network=host" ];

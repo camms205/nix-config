@@ -25,7 +25,10 @@
 
   services = {
     xserver.videoDrivers = [ "nvidia" ];
-    logind.lidSwitch = "ignore";
+    logind = {
+      lidSwitch = "ignore";
+      lidSwitchDocked = "ignore";
+    };
   };
 
   hardware.nvidia = {
