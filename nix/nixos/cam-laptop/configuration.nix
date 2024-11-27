@@ -80,6 +80,7 @@ with lib;
   security.rtkit.enable = true;
   services = {
     blueman.enable = true;
+    fprintd.enable = true;
     fwupd.enable = true;
     logrotate.checkConfig = false;
     pipewire = {

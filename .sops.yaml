@@ -3,6 +3,7 @@ keys:
   - &admin_cshearer age1vfq6fselrwr9cl3udvx96ldpakzfdhaf8rl5sl9ztg5heq8pjswserwwhe
   - &admin_laptop age16nln5sa5mc835epftdlg4qr04xacn92fspng2vv9rz3jm995aglqsdjl3q
   - &machine_cam-desktop age1pzsyqcmx4c445pvjyjt0zm84eev3wewwyw6swq44emy8ctn4hfuqhc4dyh
+  - &machine_cam-laptop age1alcamcs84veuatalyac4w9dv33fmsskkcf4vk7x8649we9ew857su566cg
   - &machine_nixos_wsl age15sehvxxhnusnhs486we2sznz4736prpf4g5r7ynrycng5xk7f5yss670au
   - &machine_camms age1jv72xhzl6scs50q8k689ughewaum7zznk5la5anuxxfxl3cquqasvpdkwd
   - &machine_cms-server age1wjsewg482wd7dgk04pqspnxyzqjg806zlmmfk8tynar6358yascssl6lg5
@@ -14,6 +15,7 @@ creation_rules:
           - *admin_cshearer
           - *admin_laptop
           - *machine_cam-desktop
+          - *machine_cam-laptop
           - *machine_nixos_wsl
           - *machine_camms
           - *machine_cms-server
