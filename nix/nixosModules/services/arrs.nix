@@ -67,6 +67,7 @@ with lib;
     services = {
       jellyfin = {
         enable = true;
+        openFirewall = true;
         inherit user group;
       };
       jellyseerr.enable = true;
