@@ -10,5 +10,8 @@ with lib;
 
   config = mkIf cfg.enable {
     services.openssh.enable = true;
+    sops.secrets = {
+      "cameron_ssh_key".owner = "${config.camms.user.name}";
+    };
   };
 }

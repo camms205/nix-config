@@ -33,7 +33,7 @@ with lib;
 
   networking.hostName = "nixos-wsl";
 
-  fonts.packages = with pkgs; [ fira-code-nerdfont ];
+  fonts.packages = with pkgs; [ nerd-fonts.fira-code ];
 
   services.avahi.enable = true;
 }

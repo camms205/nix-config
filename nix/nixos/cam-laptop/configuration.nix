@@ -74,7 +74,7 @@ with lib;
     noto-fonts
     noto-fonts-cjk-sans
     noto-fonts-emoji
-    fira-code-nerdfont
+    nerd-fonts.fira-code
   ];
 
   security.rtkit.enable = true;

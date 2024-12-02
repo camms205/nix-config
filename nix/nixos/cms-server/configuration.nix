@@ -1,7 +1,7 @@
 {
-  lib,
   inputs,
   pkgs,
+  config,
   ...
 }:
 {
@@ -38,6 +38,9 @@
     open = false;
     nvidiaSettings = true;
   };
+
+  boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
+  nix.settings.extra-platforms = config.boot.binfmt.emulatedSystems;
 
   networking.hostName = "cms-server";
 
