@@ -14,9 +14,13 @@ with lib;
 
   options.camms.wsl.enable = mkEnableOption "wsl";
 
-  config.wsl = mkIf cfg.enable {
-    enable = true;
-    defaultUser = config.camms.user.name;
-    useWindowsDriver = true;
+  config = mkIf cfg.enable {
+    wsl = {
+      enable = true;
+      defaultUser = config.camms.user.name;
+      useWindowsDriver = true;
+    };
+
+    services.resolved.enable = false;
   };
 }
