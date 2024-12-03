@@ -95,9 +95,5 @@ with lib;
     printing.enable = true;
   };
 
-  environment.variables = {
-    POLKIT_BIN = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
-  };
-
   system.stateVersion = "24.05";
 }
