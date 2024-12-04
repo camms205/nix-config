@@ -16,11 +16,12 @@ with lib;
   config = mkIf cfg.enable {
     wayland.windowManager.hyprland = {
       enable = true;
+      systemd.enable = false;
       settings = {
         "$mod" = "SUPER";
         monitor = [
           "eDP-1,highrr,auto,1.5667"
-          "DP-3,highrr,auto,1"
+          "DP-3,highrr,auto,2"
           ",1920x1080@60,auto,1"
         ];
         xwayland.force_zero_scaling = true;
@@ -188,6 +189,7 @@ with lib;
       waypipe
       wl-clipboard
       xdg-desktop-portal-hyprland
+      hyprpaper
     ];
 
     services = {
@@ -217,6 +219,7 @@ with lib;
           ];
         };
       };
+      hyprpaper.enable = true;
     };
 
     programs = {
@@ -239,28 +242,27 @@ with lib;
             grace = 300;
             hide_cursor = true;
           };
-          background = [
-            {
-              path = "screenshot";
-              blur_passes = 3;
-              blur_size = 8;
-            }
-          ];
-          input-field = [
-            {
-              size = "200, 50";
-              position = "0, -80";
-              monitor = "";
-              dots_center = true;
-              fade_on_empty = false;
-              outline_thickness = 5;
-              placeholder_text = ''<span foreground="##cad3f5">Password...</span>'';
-              shadow_passes = 2;
-            }
-          ];
+          # background = [
+          #   {
+          #     path = "screenshot";
+          #     blur_passes = 3;
+          #     blur_size = 8;
+          #   }
+          # ];
+          # input-field = [
+          #   {
+          #     size = "200, 50";
+          #     position = "0, -80";
+          #     monitor = "";
+          #     dots_center = true;
+          #     fade_on_empty = false;
+          #     outline_thickness = 5;
+          #     placeholder_text = ''<span foreground="##cad3f5">Password...</span>'';
+          #     shadow_passes = 2;
+          #   }
+          # ];
         };
       };
-      hyprpaper.enable = true;
     };
   };
 }

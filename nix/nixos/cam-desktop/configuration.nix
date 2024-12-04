@@ -42,6 +42,7 @@ in
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
   nix.settings.extra-platforms = config.boot.binfmt.emulatedSystems;
 
+  systemd.network.wait-online.enable = false;
   networking = {
     hostName = "cam-desktop";
     hostId = "ed222780";
@@ -73,6 +74,11 @@ in
   };
 
   programs = {
+    hyprland = {
+      enable = true;
+      withUWSM = true;
+    };
+    uwsm.enable = true;
     coolercontrol.enable = true;
     gnome-terminal.enable = true;
     dconf.enable = true;
