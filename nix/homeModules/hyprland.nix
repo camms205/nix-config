@@ -139,6 +139,8 @@ with lib;
           );
         exec-once = [
           "systemctl --user start hyprpolkitagent"
+          "systemctl --user start hypridle"
+          "systemctl --user start hyprpaper"
           "uwsm app -- eww open bar"
           "uwsm app -- udiskie -ANt"
           "systemctl --user start blueman-applet"
