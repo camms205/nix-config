@@ -55,8 +55,6 @@ with lib;
           disable_splash_rendering = true;
         };
         windowrule = [
-          "float,title:Picture-in-Picture"
-          "pin,title:Picture-in-Picture"
           "float,title:Picture in picture"
           "pin,title:Picture in picture"
         ];
@@ -97,24 +95,25 @@ with lib;
             "$mod,mouse_down,workspace,e+1"
             "$mod,mouse_up,workspace,e-1"
 
-            ",XF86AudioRaiseVolume,exec,uwsm app -- pamixer -i 5"
-            ",XF86AudioLowerVolume,exec,uwsm app -- pamixer -d 5"
-            ",XF86AudioStop,exec,uwsm app -- playerctl stop"
-            ",XF86AudioPrev,exec,uwsm app -- playerctl previous"
-            ",XF86AudioPlay,exec,uwsm app -- playerctl play-pause"
-            "$mod_SHIFT,F10,exec,uwsm app -- playerctl play-pause"
-            ",XF86AudioNext,exec,uwsm app -- playerctl next"
-            "SHIFT,XF86AudioPrev,exec,uwsm app -- playerctld shift"
-            "SHIFT,XF86AudioPlay,exec,uwsm app -- playerctl -a play-pause"
-            "SHIFT,XF86AudioNext,exec,uwsm app -- playerctld unshift"
-            ",XF86MonBrightnessUp,exec,uwsm app -- brightnessctl s +10%"
-            ",XF86MonBrightnessDown,exec,uwsm app -- brightnessctl s 10%-"
+            ",XF86AudioRaiseVolume,exec,pamixer -i 5"
+            ",XF86AudioLowerVolume,exec,pamixer -d 5"
+            ",XF86AudioMute,exec,pamixer -t"
+            ",XF86AudioStop,exec,playerctl stop"
+            ",XF86AudioPrev,exec,playerctl previous"
+            ",XF86AudioPlay,exec,playerctl play-pause"
+            "$mod_SHIFT,F10,exec,playerctl play-pause"
+            ",XF86AudioNext,exec,playerctl next"
+            "SHIFT,XF86AudioPrev,exec,playerctld shift"
+            "SHIFT,XF86AudioPlay,exec,playerctl -a play-pause"
+            "SHIFT,XF86AudioNext,exec,playerctld unshift"
+            ",XF86MonBrightnessUp,exec,brightnessctl s +10%"
+            ",XF86MonBrightnessDown,exec,brightnessctl s 10%-"
 
-            ",XF86AudioMedia,exec,uwsm app -- sleep 1 && hyprctl dispatch dpms off"
-            "SHIFT,XF86AudioMedia,exec,uwsm app -- sleep 1 && hyprctl dispatch dpms on"
-            "$mod_SHIFT,F11,exec,uwsm app -- sleep 1 && hyprctl dispatch dpms off"
-            "$mod,F11,exec,uwsm app -- sleep 1 && hyprctl dispatch dpms on"
-            ",Print,exec,uwsm app -- grimshot copy area"
+            ",XF86AudioMedia,exec,sleep 1 && hyprctl dispatch dpms off"
+            "SHIFT,XF86AudioMedia,exec,sleep 1 && hyprctl dispatch dpms on"
+            "$mod_SHIFT,F11,exec,sleep 1 && hyprctl dispatch dpms off"
+            "$mod,F11,exec,sleep 1 && hyprctl dispatch dpms on"
+            ",Print,exec,grimshot copy area"
           ]
           ++ (
             # workspaces
