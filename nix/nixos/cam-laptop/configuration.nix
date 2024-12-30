@@ -49,6 +49,11 @@ with lib;
   };
 
   programs = {
+    hyprland = {
+      enable = true;
+      withUWSM = true;
+    };
+    uwsm.enable = true;
     dconf.enable = true;
     nm-applet.enable = true;
     steam.enable = true;

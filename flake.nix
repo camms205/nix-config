@@ -30,6 +30,8 @@
       home-manager.follows = "home-manager";
       nixpkgs.follows = "nixpkgs";
     };
+
+    ghostty.url = "github:ghostty-org/ghostty";
   };
 
   outputs =

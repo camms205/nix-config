@@ -8,6 +8,7 @@
 }:
 let
   cfg = config.camms.hyprland;
+  term = if config.camms.ghostty.enable then "ghostty" else "kitty";
 in
 with lib;
 {
@@ -65,7 +66,7 @@ with lib;
         bind =
           [
             "CTRL ALT,DELETE,exec,systemctl suspend"
-            "$mod,Q,exec,uwsm app -- kitty"
+            "$mod,Q,exec,uwsm app -- ${term}"
             "$mod,RETURN,exec,uwsm app -- alacritty"
             "$mod,C,killactive,"
             "$mod,M,exit,"
@@ -143,10 +144,10 @@ with lib;
           "uwsm app -- eww open bar"
           "uwsm app -- udiskie -ANt"
           "systemctl --user start blueman-applet"
-          "[workspace 1 silent] uwsm app -- kitty"
+          "[workspace 1 silent] uwsm app -- ${term}"
           "[workspace 2 silent] uwsm app -- brave"
           #"[workspace 3 silent] uwsm app -- obsidian"
-          "[workspace 10 silent;fullscreen] uwsm app -- kitty btop"
+          "[workspace 10 silent;fullscreen] uwsm app -- ${term} btop"
         ];
       };
       extraConfig = ''
