@@ -9,5 +9,6 @@ with lib;
     browser.enable = true;
     hyprland.enable = true;
     programs.enable = true;
+    ghostty.enable = true;
   };
 }

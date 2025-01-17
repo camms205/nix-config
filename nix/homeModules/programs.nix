@@ -14,15 +14,13 @@ with lib;
 
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
-      blender-hip
-      bottles
+      # blender-hip
       discord
       jellyfin-media-player
       libreoffice
       okular
-      # obsidian
       prismlauncher
-      # telegram-desktop
+      wineWowPackages.stable
     ];
 
     programs = {

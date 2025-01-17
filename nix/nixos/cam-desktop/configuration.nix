@@ -83,7 +83,14 @@ in
     gnome-terminal.enable = true;
     dconf.enable = true;
     nm-applet.enable = true;
-    steam.enable = true;
+    steam = {
+      enable = true;
+      gamescopeSession.enable = true;
+      gamescopeSession.args = [
+        "--hdr-enabled"
+        "--adaptive-sync"
+      ];
+    };
     virt-manager.enable = true;
   };
 
@@ -126,6 +133,7 @@ in
   services = {
     avahi.enable = true;
     blueman.enable = true;
+    flatpak.enable = true;
     fwupd.enable = true;
     logrotate.checkConfig = false;
     pipewire = {

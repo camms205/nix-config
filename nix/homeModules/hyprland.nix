@@ -22,7 +22,7 @@ with lib;
         "$mod" = "SUPER";
         monitor = [
           "eDP-1,highrr,auto,1.5667"
-          "DP-3,highrr,auto,2"
+          "desc:ASUSTek COMPUTER INC PG32UCDM S6LMQS070640,3840x2160@240,0x0,2,bitdepth,10,vrr,2"
           ",1920x1080@60,auto,1"
         ];
         xwayland.force_zero_scaling = true;
@@ -147,7 +147,7 @@ with lib;
           "[workspace 1 silent] uwsm app -- ${term}"
           "[workspace 2 silent] uwsm app -- brave"
           #"[workspace 3 silent] uwsm app -- obsidian"
-          "[workspace 10 silent;fullscreen] uwsm app -- ${term} btop"
+          "[workspace 10 silent;fullscreen] uwsm app -- ${term} -e btop"
         ];
       };
       extraConfig = ''
