@@ -35,6 +35,7 @@ with lib;
   config = {
     sops = {
       inherit (cfg) defaultSopsFile;
+      secrets."copilot_api_key".owner = "${config.camms.user.name}";
       age = {
         inherit (cfg) sshKeyPaths;
         keyFile = mkIf (cfg.keyFile != null) cfg.keyFile;

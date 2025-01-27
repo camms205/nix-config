@@ -12,12 +12,16 @@ let
 in
 with lib;
 {
-  options.camms.hyprland.enable = mkEnableOption "hyprland";
+  options.camms.hyprland = {
+    enable = mkEnableOption "hyprland";
+    hdr = mkEnableOption "hdr";
+  };
 
   config = mkIf cfg.enable {
     wayland.windowManager.hyprland = {
       enable = true;
       systemd.enable = false;
+      package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
       settings = {
         "$mod" = "SUPER";
         monitor = [
@@ -25,6 +29,9 @@ with lib;
           "desc:ASUSTek COMPUTER INC PG32UCDM S6LMQS070640,3840x2160@240,0x0,2,bitdepth,10,vrr,2"
           ",1920x1080@60,auto,1"
         ];
+        experimental = mkIf cfg.hdr {
+          xx_color_management_v4 = true;
+        };
         xwayland.force_zero_scaling = true;
         env = [
           "GDK_SCALE,1.5"

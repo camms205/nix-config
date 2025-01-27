@@ -110,7 +110,7 @@ with lib;
               Type = "simple";
               User = user;
               Group = group;
-              ExecStart = "${pkgs.zurg}/bin/zurg -c ${config.sops.secrets."media/zurg-config.yml".path}";
+              ExecStart = "${lib.getExe pkgs.zurg} -c ${config.sops.secrets."media/zurg-config.yml".path}";
               WorkingDirectory = "/var/lib/zurg";
               Restart = "on-failure";
             };

@@ -1,7 +1,6 @@
 {
   lib,
   pkgs,
-  inputs,
   config,
   ...
 }:
@@ -21,9 +20,9 @@ with lib;
     };
     lf =
       let
-        fzf = "${pkgs.fzf}/bin/fzf";
-        fd = "${pkgs.fd}/bin/fd";
-        ctpv = "${pkgs.ctpv}/bin";
+        fzf = "${lib.getExe pkgs.fzf}";
+        fd = "${lib.getExe pkgs.fd}";
+        ctpv = "${lib.getExe' pkgs.ctpv "ctpv"}";
       in
       {
         enable = true;

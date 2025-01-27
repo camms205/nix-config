@@ -76,6 +76,7 @@ in
   programs = {
     hyprland = {
       enable = true;
+      package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
       withUWSM = true;
     };
     uwsm.enable = true;
@@ -95,6 +96,7 @@ in
   };
 
   virtualisation = {
+    spiceUSBRedirection.enable = true;
     libvirtd = {
       enable = true;
       qemu = {

@@ -1,7 +1,6 @@
 {
   lib,
   pkgs,
-  inputs,
   config,
   osConfig ? { },
   ...
@@ -50,22 +49,50 @@ with lib;
           name = "cpp";
           auto-format = true;
           formatter.command = "clang-format";
+          language-servers = [
+            "clangd"
+            "helix-gpt"
+          ];
         }
         {
           name = "nix";
           auto-format = true;
-          formatter.command = "${pkgs.nixfmt-rfc-style}/bin/nixfmt";
+          formatter.command = "${lib.getExe pkgs.nixfmt-rfc-style}";
           language-servers = [
             "nil"
             "nixd"
+            "helix-gpt"
+          ];
+        }
+        {
+          name = "rust";
+          language-servers = [
+            "rust-analyzer"
+            "helix-gpt"
+          ];
+        }
+        {
+          name = "wgsl";
+          language-servers = [
+            "wgsl-analyzer"
+            "helix-gpt"
           ];
         }
       ];
       language-server = {
+        helix-gpt =
+          let
+            helix-gpt = pkgs.writeShellScriptBin "helix-gpt" ''
+              env -S $(cat /run/secrets/copilot_api_key) ${lib.getExe pkgs.helix-gpt}
+            '';
+          in
+          {
+            command = "${lib.getExe helix-gpt}";
+          };
         rust-analyzer.config.checkOnSave.command = "clippy";
-        nil.command = "${pkgs.nil}/bin/nil";
+        nil.command = "${lib.getExe pkgs.nil}";
         nixd = {
-          command = "${pkgs.nixd}/bin/nixd";
+          command = "${lib.getExe pkgs.nixd}";
           config.nixd.options =
             let
               flake = osConfig.camms.variables.flakeDir or "${config.user.home.directory}/.config/nix";

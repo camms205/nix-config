@@ -14,7 +14,7 @@ with lib;
 
   config = mkIf cfg.enable {
     home.packages = [
-      inputs.ghostty.packages.${pkgs.system}.default
+      pkgs.ghostty
     ];
 
     xdg.configFile."ghostty/config".text = ''
