@@ -56,7 +56,10 @@ with lib;
     uwsm.enable = true;
     dconf.enable = true;
     nm-applet.enable = true;
-    steam.enable = true;
+    steam = {
+      enable = true;
+      extraCompatPackages = with pkgs; [ proton-ge-bin ];
+    };
     virt-manager.enable = true;
   };
 
