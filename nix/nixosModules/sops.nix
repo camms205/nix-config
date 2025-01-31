@@ -1,6 +1,5 @@
 {
   lib,
-  pkgs,
   inputs,
   config,
   ...
@@ -35,7 +34,11 @@ with lib;
   config = {
     sops = {
       inherit (cfg) defaultSopsFile;
-      secrets."copilot_api_key".owner = "${config.camms.user.name}";
+      secrets = {
+        "copilot_api_key".owner = "${config.camms.user.name}";
+        "spotify_user".owner = "${config.camms.user.name}";
+        "spotify_pass".owner = "${config.camms.user.name}";
+      };
       age = {
         inherit (cfg) sshKeyPaths;
         keyFile = mkIf (cfg.keyFile != null) cfg.keyFile;

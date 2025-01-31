@@ -95,7 +95,7 @@ with lib;
           command = "${lib.getExe pkgs.nixd}";
           config.nixd.options =
             let
-              flake = osConfig.camms.variables.flakeDir or "${config.user.home.directory}/.config/nix";
+              flake = osConfig.camms.variables.flakeDir or "${config.home.homeDirectory}/.config/nix";
             in
             {
               nixos.expr = ''(builtins.getFlake "${flake}").nixosConfigurations.cam-desktop.options'';

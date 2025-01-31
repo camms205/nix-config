@@ -18,6 +18,13 @@ with lib;
   };
 
   config = mkIf cfg.enable {
+    camms = {
+      browser.enable = mkDefault true;
+      ghostty.enable = mkDefault true;
+      programs.enable = mkDefault true;
+      # spotify.enable = mkDefault true;
+    };
+
     wayland.windowManager.hyprland = {
       enable = true;
       systemd.enable = false;
