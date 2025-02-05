@@ -22,7 +22,7 @@ with lib;
       browser.enable = mkDefault true;
       ghostty.enable = mkDefault true;
       programs.enable = mkDefault true;
-      # spotify.enable = mkDefault true;
+      spotify.enable = mkDefault true;
     };
 
     wayland.windowManager.hyprland = {
@@ -203,7 +203,6 @@ with lib;
       tigervnc
       waypipe
       wl-clipboard
-      xdg-desktop-portal-hyprland
       hyprpaper
     ];
 

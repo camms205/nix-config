@@ -16,18 +16,18 @@ with lib;
       pkgs.spotify-player
     ];
 
-    services.spotifyd = {
-      enable = true;
-      settings = {
-        global = {
-          cache_path = "${config.home.homeDirectory}/.cache/spotifyd";
-          username_cmd = "cat /run/secrets/spotify_user";
-          # password_cmd = "cat /run/secrets/spotify_pass";
-          backend = "pulseaudio";
-          device_name = "cam-desktop";
-          device_type = "computer";
-        };
-      };
-    };
+    # services.spotifyd = {
+    #   enable = true;
+    #   settings = {
+    #     global = {
+    #       cache_path = "${config.home.homeDirectory}/.cache/spotifyd";
+    #       username_cmd = "cat /run/secrets/spotify_user";
+    #       # password_cmd = "cat /run/secrets/spotify_pass";
+    #       backend = "pulseaudio";
+    #       device_name = "cam-desktop";
+    #       device_type = "computer";
+    #     };
+    #   };
+    # };
   };
 }

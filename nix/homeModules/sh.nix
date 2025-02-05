@@ -28,7 +28,6 @@ with lib;
       nix-tree
       ripdrag
       socat
-      spotify-player
       texliveSmall
       unzip
     ];
