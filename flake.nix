@@ -30,8 +30,6 @@
       home-manager.follows = "home-manager";
       nixpkgs.follows = "nixpkgs";
     };
-
-    hyprland.url = "github:hyprwm/Hyprland";
   };
 
   outputs =

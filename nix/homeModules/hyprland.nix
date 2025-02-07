@@ -28,21 +28,20 @@ with lib;
     wayland.windowManager.hyprland = {
       enable = true;
       systemd.enable = false;
-      package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
       settings = {
         "$mod" = "SUPER";
         monitor = [
-          "eDP-1,highrr,auto,1.5667"
-          "desc:ASUSTek COMPUTER INC PG32UCDM S6LMQS070640,3840x2160@240,0x0,2,bitdepth,10,vrr,2"
-          ",1920x1080@60,auto,1"
+          "eDP-1, highrr, auto, 1.5667"
+          "desc:ASUSTek COMPUTER INC PG32UCDM S6LMQS070640, 3840x2160@240, 0x0, 2, bitdepth, 10, vrr, 2"
+          ", 1920x1080@60, auto, 1"
         ];
         experimental = mkIf cfg.hdr {
           xx_color_management_v4 = true;
         };
         xwayland.force_zero_scaling = true;
         env = [
-          "GDK_SCALE,1.5"
-          "XCURSOR_SIZE,24"
+          "GDK_SCALE, 1.5"
+          "XCURSOR_SIZE, 24"
         ];
         input = {
           numlock_by_default = true;
@@ -58,10 +57,10 @@ with lib;
         animations = {
           enabled = true;
           animation = [
-            "windows,1,4,default,slide"
-            "border,1,10,default"
-            "fade,1,10,default"
-            "workspaces,1,3,default,fade"
+            "windows, 1, 4, default, slide"
+            "border, 1, 10, default"
+            "fade, 1, 10, default"
+            "workspaces, 1, 3, default, fade"
           ];
         };
         gestures.workspace_swipe = "no";
@@ -69,66 +68,68 @@ with lib;
           disable_hyprland_logo = true;
           disable_splash_rendering = true;
         };
-        windowrule = [
-          "float,title:Picture in picture"
-          "pin,title:Picture in picture"
+        windowrulev2 = [
+          "float, title:^(Picture in picture)$"
+          "pin, title:^(Picture in picture)$"
+          "size 480 270, title:^(Picture in picture)$"
+          "move 100%-482 100%-272, title:^(Picture in picture)$"
         ];
         bindm = [
-          "$mod,mouse:272,movewindow"
-          "$mod,mouse:273,resizewindow"
+          "$mod, mouse:272, movewindow"
+          "$mod, mouse:273, resizewindow"
         ];
         bind =
           [
-            "CTRL ALT,DELETE,exec,systemctl suspend"
-            "$mod,Q,exec,uwsm app -- ${term}"
-            "$mod,RETURN,exec,uwsm app -- alacritty"
-            "$mod,C,killactive,"
-            "$mod,M,exit,"
-            "$mod,E,exec,uwsm app -- dolphin"
-            "$mod,V,togglefloating,"
-            "$mod,F,fullscreen"
-            "$mod,R,exec,fuzzel --launch-prefix='uwsm app --'"
-            "$mod SHIFT,R,exec,wofi -d -o DP-3 | xargs hyprctl dispatch exec uwsm app --"
-            "$mod,P,pseudo"
-            "$mod,p,togglefloating"
-            "$mod,p,pin"
+            "CTRL ALT, DELETE, exec, systemctl suspend"
+            "$mod, Q, exec, uwsm app -- ${term}"
+            "$mod, RETURN, exec, uwsm app -- alacritty"
+            "$mod, C, killactive, "
+            "$mod, M, exit, "
+            "$mod, E, exec, uwsm app -- dolphin"
+            "$mod, V, togglefloating, "
+            "$mod, F, fullscreen"
+            "$mod, R, exec, fuzzel --launch-prefix='uwsm app --'"
+            "$mod SHIFT, R, exec, wofi -d -o DP-3 | xargs hyprctl dispatch exec uwsm app --"
+            "$mod, P, pseudo"
+            "$mod, p, togglefloating"
+            "$mod, p, pin"
 
-            "$mod,left,movefocus,l"
-            "$mod,right,movefocus,r"
-            "$mod,up,movefocus,u"
-            "$mod,down,movefocus,d"
-            "$mod,h,movefocus,l"
-            "$mod,l,movefocus,r"
-            "$mod,k,movefocus,u"
-            "$mod,j,movefocus,d"
+            "$mod, left, movefocus, l"
+            "$mod, right, movefocus, r"
+            "$mod, up, movefocus, u"
+            "$mod, down, movefocus, d"
+            "$mod, h, movefocus, l"
+            "$mod, l, movefocus, r"
+            "$mod, k, movefocus, u"
+            "$mod, j, movefocus, d"
 
-            "$mod SHIFT,h,movewindow,l"
-            "$mod SHIFT,l,movewindow,r"
-            "$mod SHIFT,k,movewindow,u"
-            "$mod SHIFT,j,movewindow,d"
+            "$mod SHIFT, h, movewindow, l"
+            "$mod SHIFT, l, movewindow, r"
+            "$mod SHIFT, k, movewindow, u"
+            "$mod SHIFT, j, movewindow, d"
 
-            "$mod,mouse_down,workspace,e+1"
-            "$mod,mouse_up,workspace,e-1"
+            "$mod, mouse_down, workspace, e+1"
+            "$mod, mouse_up, workspace, e-1"
 
-            ",XF86AudioRaiseVolume,exec,pamixer -i 5"
-            ",XF86AudioLowerVolume,exec,pamixer -d 5"
-            ",XF86AudioMute,exec,pamixer -t"
-            ",XF86AudioStop,exec,playerctl stop"
-            ",XF86AudioPrev,exec,playerctl previous"
-            ",XF86AudioPlay,exec,playerctl play-pause"
-            "$mod_SHIFT,F10,exec,playerctl play-pause"
-            ",XF86AudioNext,exec,playerctl next"
-            "SHIFT,XF86AudioPrev,exec,playerctld shift"
-            "SHIFT,XF86AudioPlay,exec,playerctl -a play-pause"
-            "SHIFT,XF86AudioNext,exec,playerctld unshift"
-            ",XF86MonBrightnessUp,exec,brightnessctl s +10%"
-            ",XF86MonBrightnessDown,exec,brightnessctl s 10%-"
+            ", XF86AudioRaiseVolume, exec, pamixer -i 5"
+            ", XF86AudioLowerVolume, exec, pamixer -d 5"
+            ", XF86AudioMute, exec, pamixer -t"
+            ", XF86AudioStop, exec, playerctl stop"
+            ", XF86AudioPrev, exec, playerctl previous"
+            ", XF86AudioPlay, exec, playerctl play-pause"
+            "$mod_SHIFT, F10, exec, playerctl play-pause"
+            ", XF86AudioNext, exec, playerctl next"
+            "SHIFT, XF86AudioPrev, exec, playerctld shift"
+            "SHIFT, XF86AudioPlay, exec, playerctl -a play-pause"
+            "SHIFT, XF86AudioNext, exec, playerctld unshift"
+            ", XF86MonBrightnessUp, exec, brightnessctl s +10%"
+            ", XF86MonBrightnessDown, exec, brightnessctl s 10%-"
 
-            ",XF86AudioMedia,exec,sleep 1 && hyprctl dispatch dpms off"
-            "SHIFT,XF86AudioMedia,exec,sleep 1 && hyprctl dispatch dpms on"
-            "$mod_SHIFT,F11,exec,sleep 1 && hyprctl dispatch dpms off"
-            "$mod,F11,exec,sleep 1 && hyprctl dispatch dpms on"
-            ",Print,exec,grimshot copy area"
+            ", XF86AudioMedia, exec, sleep 1 && hyprctl dispatch dpms off"
+            "SHIFT, XF86AudioMedia, exec, sleep 1 && hyprctl dispatch dpms on"
+            "$mod_SHIFT, F11, exec, sleep 1 && hyprctl dispatch dpms off"
+            "$mod, F11, exec, sleep 1 && hyprctl dispatch dpms on"
+            ", Print, exec, grimshot copy area"
           ]
           ++ (
             # workspaces
@@ -139,14 +140,14 @@ with lib;
                   ws = i + 1;
                 in
                 [
-                  "$mod,${toString ws},workspace,${toString ws}"
-                  "$mod SHIFT,${toString ws},movetoworkspace,${toString ws}"
+                  "$mod, ${toString ws}, workspace, ${toString ws}"
+                  "$mod SHIFT, ${toString ws}, movetoworkspace, ${toString ws}"
                 ]
               ) 9
               ++ [
                 [
-                  "$mod,0,workspace,10"
-                  "$mod SHIFT,0,movetoworkspace,10"
+                  "$mod, 0, workspace, 10"
+                  "$mod SHIFT, 0, movetoworkspace, 10"
                 ]
               ]
             )
@@ -165,29 +166,29 @@ with lib;
         ];
       };
       extraConfig = ''
-        bind=$mod,Delete,submap,pass_keys
+        bind=$mod, Delete, submap, pass_keys
         submap=pass_keys
-        bind=$mod,Delete,submap,reset
+        bind=$mod, Delete, submap, reset
         submap=reset
 
-        bind=ALT,r,submap,resize
+        bind=ALT, r, submap, resize
         submap=resize
-        binde=,l,resizeactive,10 0
-        binde=,h,resizeactive,-10 0
-        binde=,k,resizeactive,0 -10
-        binde=,j,resizeactive,0 10
+        binde=, l, resizeactive, 10 0
+        binde=, h, resizeactive, -10 0
+        binde=, k, resizeactive, 0 -10
+        binde=, j, resizeactive, 0 10
 
-        binde=SHIFT,l,resizeactive,-10 0
-        binde=SHIFT,h,resizeactive,10 0
-        binde=SHIFT,k,resizeactive,0 10
-        binde=SHIFT,j,resizeactive,0 -10
+        binde=SHIFT, l, resizeactive, -10 0
+        binde=SHIFT, h, resizeactive, 10 0
+        binde=SHIFT, k, resizeactive, 0 10
+        binde=SHIFT, j, resizeactive, 0 -10
 
-        binde=SHIFT,l,moveactive,10 0
-        binde=SHIFT,h,moveactive,-10 0
-        binde=SHIFT,k,moveactive,0 -10
-        binde=SHIFT,j,moveactive,0 10
+        binde=SHIFT, l, moveactive, 10 0
+        binde=SHIFT, h, moveactive, -10 0
+        binde=SHIFT, k, moveactive, 0 -10
+        binde=SHIFT, j, moveactive, 0 10
 
-        bind=ALT,r,submap,reset
+        bind=ALT, r, submap, reset
         submap=reset
       '';
     };
