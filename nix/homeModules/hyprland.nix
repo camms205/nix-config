@@ -108,8 +108,8 @@ with lib;
             "$mod SHIFT, k, movewindow, u"
             "$mod SHIFT, j, movewindow, d"
 
-            "$mod, mouse_down, workspace, e+1"
-            "$mod, mouse_up, workspace, e-1"
+            "$mod, mouse_up, workspace, e+1"
+            "$mod, mouse_down, workspace, e-1"
 
             ", XF86AudioRaiseVolume, exec, pamixer -i 5"
             ", XF86AudioLowerVolume, exec, pamixer -d 5"

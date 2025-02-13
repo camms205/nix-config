@@ -1,1 +1,4 @@
-{ ... }: { }
+{ ... }:
+{
+  programs.syncthing.enable = true;
+}

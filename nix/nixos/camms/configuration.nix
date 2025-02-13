@@ -28,6 +28,7 @@ with lib;
   };
 
   networking = {
+    networkmanager.enable = true;
     hostName = "camms";
     hostId = "707378ff";
   };
