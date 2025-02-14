@@ -18,7 +18,6 @@ with lib;
     camms.lf.enable = true;
 
     home.packages = with pkgs; [
-      cachix
       compsize
       dust
       entr
@@ -27,7 +26,6 @@ with lib;
       nix-output-monitor
       nix-tree
       ripdrag
-      socat
       texliveSmall
       unzip
     ];

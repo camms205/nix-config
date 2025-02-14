@@ -31,10 +31,7 @@ with lib;
     nix-ld.enable = true;
   };
 
-  networking = {
-    hostName = "nixos-wsl";
-    networkmanager.enable = true;
-  };
+  networking.hostName = "nixos-wsl";
 
   fonts.packages = with pkgs; [ nerd-fonts.fira-code ];
   systemd.network.wait-online.enable = false;

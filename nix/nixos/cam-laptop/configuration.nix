@@ -16,7 +16,6 @@ with lib;
     archetypes.workstation.enable = true;
     home.path = ./home.nix;
     user.extraGroups = [
-      "networkmanager"
       "libvirtd"
     ];
     user.name = "cameron";
@@ -30,8 +29,6 @@ with lib;
   nix.settings.extra-platforms = config.boot.binfmt.emulatedSystems;
 
   networking.hostName = "cam-laptop";
-  networking.networkmanager.enable = true;
-  networking.iproute2.enable = true;
 
   i18n.inputMethod = {
     enable = true;
@@ -68,13 +65,8 @@ with lib;
   environment.systemPackages = with pkgs; [
     adwaita-icon-theme
     brightnessctl
-    git
     helvum
-    iproute2
-    socat
-    sshfs
     vim
-    wget
     xfce.xfce4-icon-theme
   ];
   fonts.packages = with pkgs; [

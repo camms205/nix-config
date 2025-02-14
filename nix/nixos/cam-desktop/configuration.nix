@@ -27,7 +27,6 @@ in
     user = {
       name = user;
       extraGroups = [
-        "networkmanager"
         "libvirtd"
         "dialout"
         "podman"
@@ -42,15 +41,10 @@ in
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
   nix.settings.extra-platforms = config.boot.binfmt.emulatedSystems;
 
-  systemd.network.wait-online.enable = false;
   networking = {
     hostName = "cam-desktop";
     hostId = "ed222780";
-    networkmanager = {
-      enable = true;
-      unmanaged = [ "interface-name:ve-*" ];
-    };
-    iproute2.enable = true;
+    networkmanager.unmanaged = [ "interface-name:ve-*" ];
     nat = {
       enable = true;
       internalInterfaces = [ "ve-+" ];
@@ -111,16 +105,11 @@ in
     dive
     distrobox
     adwaita-icon-theme
-    git
     helvum
-    iproute2
     podman-compose
     podman-tui
-    socat
-    sshfs
     vim
     virtiofsd
-    wget
     xfce.xfce4-icon-theme
   ];
   fonts.packages = with pkgs; [
