@@ -19,7 +19,7 @@ with lib;
       "cachix-agent".path = "/etc/cachix-agent.token";
       "cachix".owner = "${config.camms.user.name}";
     };
-    environement.systemPackages = [
+    environment.systemPackages = [
       pkgs.cachix
     ];
   };
