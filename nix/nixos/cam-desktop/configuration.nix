@@ -120,13 +120,20 @@ in
     nerd-fonts.fira-code
   ];
 
-  security.rtkit.enable = true;
+  security = {
+    rtkit.enable = true;
+    pam.services = {
+      login.u2fAuth = true;
+      sudo.u2fAuth = true;
+    };
+  };
   services = {
     avahi.enable = true;
     blueman.enable = true;
     flatpak.enable = true;
     fwupd.enable = true;
     logrotate.checkConfig = false;
+    pcscd.enable = true;
     pipewire = {
       enable = true;
       alsa = {
@@ -142,6 +149,7 @@ in
       enable = true;
       capSysAdmin = true;
     };
+    udev.packages = [ pkgs.yubikey-personalization ];
   };
 
   system.stateVersion = "24.05";

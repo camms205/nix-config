@@ -257,6 +257,10 @@ with lib;
             grace = 300;
             hide_cursor = true;
           };
+          auth = {
+            "pam:module" = "login";
+            "fingerprint:enable" = true;
+          };
           # background = [
           #   {
           #     path = "screenshot";
