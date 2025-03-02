@@ -18,7 +18,7 @@ with lib;
       discord
       jellyfin-media-player
       libreoffice
-      okular
+      kdePackages.okular
       prismlauncher
       wineWowPackages.stable
     ];

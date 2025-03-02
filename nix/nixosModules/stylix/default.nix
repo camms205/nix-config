@@ -15,8 +15,8 @@ with lib;
 
   options.camms.stylix.enable = mkEnableOption "stylix";
 
-  config.stylix = mkIf cfg.enable {
-    enable = true;
+  config.stylix = {
+    enable = cfg.enable;
     image =
       if config.networking.hostName or "" == "cam-laptop" then
         ./wallpapers/death_star.jpg
