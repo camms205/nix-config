@@ -85,6 +85,7 @@ with lib;
       };
       zellij = {
         enable = true;
+        enableFishIntegration = false;
         settings = {
           pane_frames = false;
         };
