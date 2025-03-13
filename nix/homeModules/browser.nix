@@ -22,8 +22,5 @@ with lib;
         "--gtk-version=4"
       ];
     };
-    firefox = {
-      enable = true;
-    };
   };
 }
