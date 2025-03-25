@@ -55,7 +55,7 @@ with lib;
             formatter.command = "clang-format";
             language-servers = [
               "clangd"
-              "helix-gpt"
+              # "helix-gpt"
             ];
           }
           {
@@ -65,21 +65,21 @@ with lib;
             language-servers = [
               "nil"
               "nixd"
-              "helix-gpt"
+              # "helix-gpt"
             ];
           }
           {
             name = "rust";
             language-servers = [
               "rust-analyzer"
-              "helix-gpt"
+              # "helix-gpt"
             ];
           }
           {
             name = "wgsl";
             language-servers = [
               "wgsl-analyzer"
-              "helix-gpt"
+              # "helix-gpt"
             ];
           }
         ];

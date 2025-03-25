@@ -11,4 +11,8 @@ with lib;
       hdr = true;
     };
   };
+
+  home.packages = with pkgs; [
+    blender-hip
+  ];
 }
