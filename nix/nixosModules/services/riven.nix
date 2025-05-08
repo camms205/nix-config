@@ -73,6 +73,7 @@ with lib;
           "POSTGRES_DB" = "riven";
           "POSTGRES_PASSWORD" = "postgres";
           "POSTGRES_USER" = "postgres";
+          "PGPORT" = "5433";
         };
         volumes = [
           "${cfg.dataDir}/riven-db:/var/lib/postgresql/data/pgdata:rw"
@@ -90,7 +91,7 @@ with lib;
         image = "spoked/riven-frontend:latest";
         environment = {
           "BACKEND_URL" = "http://localhost:8080";
-          "DATABASE_URL" = "postgres://postgres:postgres@localhost/riven";
+          "DATABASE_URL" = "postgres://postgres:postgres@localhost:5433/riven";
           "DIALECT" = "postgres";
           "ORIGIN" = "http://localhost:3000";
         };

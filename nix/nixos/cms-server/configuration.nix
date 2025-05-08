@@ -23,7 +23,18 @@
     user.name = "cameron";
   };
 
+  sops.secrets."immich" = { };
+
+  fileSystems."/media/pics".neededForBoot = false;
+
   services = {
+    immich = {
+      host = "0.0.0.0";
+      enable = true;
+      secretsFile = config.sops.secrets."immich".path;
+      mediaLocation = "/media/pics/immich";
+      openFirewall = true;
+    };
     xserver.videoDrivers = [ "nvidia" ];
     logind = {
       lidSwitch = "ignore";
