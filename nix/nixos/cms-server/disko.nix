@@ -59,6 +59,10 @@
                   mountpoint = "/media/pics";
                   mountOptions = [ "compress-force=zstd" ];
                 };
+                "@music" = {
+                  mountpoint = "/media/music";
+                  mountOptions = [ "compress-force=zstd" ];
+                };
               };
             };
           };

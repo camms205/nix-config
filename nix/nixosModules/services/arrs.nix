@@ -35,7 +35,7 @@ with lib;
         "RIVEN_FORCE_ENV" = "true";
         "RIVEN_SYMLINK_RCLONE_PATH" = "${path}/remote/realdebrid/torrents";
         "RIVEN_SYMLINK_LIBRARY_PATH" = "${path}/jellyfin";
-        "RIVEN_DATABASE_HOST" = "postgresql+psycopg2://postgres:postgres@localhost/riven";
+        "RIVEN_DATABASE_HOST" = "postgresql+psycopg2://postgres:postgres@localhost:5433/riven";
         "RIVEN_UPDATERS_JELLYFIN_URL" = "http://localhost:8096";
         "RIVEN_CONTENT_OVERSEERR_URL" = "http://localhost:5055";
       };
