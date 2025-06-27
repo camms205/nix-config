@@ -23,8 +23,10 @@ with lib;
       entr
       eza
       fd
+      just
       nix-output-monitor
       nix-tree
+      parallel
       ripdrag
       texliveSmall
       unzip

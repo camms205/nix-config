@@ -153,12 +153,7 @@ with lib;
             )
           );
         exec-once = [
-          "systemctl --user start hyprpolkitagent"
-          "systemctl --user start hypridle"
-          "systemctl --user start hyprpaper"
           "uwsm app -- eww open bar"
-          "uwsm app -- udiskie -ANt"
-          "systemctl --user start blueman-applet"
           "[workspace 1 silent] uwsm app -- ${term}"
           "[workspace 2 silent] uwsm app -- brave"
           #"[workspace 3 silent] uwsm app -- obsidian"
@@ -195,7 +190,6 @@ with lib;
 
     home.packages = with pkgs; [
       gammastep
-      hyprpolkitagent
       networkmanagerapplet
       pamixer
       pavucontrol
@@ -204,11 +198,11 @@ with lib;
       tigervnc
       waypipe
       wl-clipboard
-      hyprpaper
     ];
 
     services = {
       playerctld.enable = true;
+      blueman-applet.enable = true;
       hypridle = {
         enable = true;
         settings = {
@@ -235,6 +229,12 @@ with lib;
         };
       };
       hyprpaper.enable = true;
+      hyprpolkitagent.enable = true;
+      udiskie = {
+        enable = true;
+        automount = false;
+        notify = false;
+      };
     };
 
     programs = {
