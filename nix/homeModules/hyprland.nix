@@ -78,80 +78,82 @@ with lib;
           "$mod, mouse:272, movewindow"
           "$mod, mouse:273, resizewindow"
         ];
-        bind =
-          [
-            "CTRL ALT, DELETE, exec, systemctl suspend"
-            "$mod, Q, exec, uwsm app -- ${term}"
-            "$mod, RETURN, exec, uwsm app -- alacritty"
-            "$mod, C, killactive, "
-            "$mod, M, exit, "
-            "$mod, E, exec, uwsm app -- dolphin"
-            "$mod, V, togglefloating, "
-            "$mod, F, fullscreen"
-            "$mod, R, exec, fuzzel --launch-prefix='uwsm app --'"
-            "$mod SHIFT, R, exec, wofi -d -o DP-3 | xargs hyprctl dispatch exec uwsm app --"
-            "$mod, P, pseudo"
-            "$mod, p, togglefloating"
-            "$mod, p, pin"
+        bind = [
+          "CTRL ALT, DELETE, exec, systemctl suspend"
+          "$mod, Q, exec, uwsm app -- ${term}"
+          "$mod, RETURN, exec, uwsm app -- alacritty"
+          "$mod, C, killactive, "
+          "$mod, M, exit, "
+          "$mod, E, exec, uwsm app -- dolphin"
+          "$mod, V, togglefloating, "
+          "$mod, F, fullscreen"
+          "$mod, R, exec, fuzzel --launch-prefix='uwsm app --'"
+          "$mod SHIFT, R, exec, wofi -d -o DP-3 | xargs hyprctl dispatch exec uwsm app --"
+          "$mod, P, pseudo"
+          "$mod, p, togglefloating"
+          "$mod, p, pin"
 
-            "$mod, left, movefocus, l"
-            "$mod, right, movefocus, r"
-            "$mod, up, movefocus, u"
-            "$mod, down, movefocus, d"
-            "$mod, h, movefocus, l"
-            "$mod, l, movefocus, r"
-            "$mod, k, movefocus, u"
-            "$mod, j, movefocus, d"
+          "$mod, left, movefocus, l"
+          "$mod, right, movefocus, r"
+          "$mod, up, movefocus, u"
+          "$mod, down, movefocus, d"
+          "$mod, h, movefocus, l"
+          "$mod, l, movefocus, r"
+          "$mod, k, movefocus, u"
+          "$mod, j, movefocus, d"
 
-            "$mod SHIFT, h, movewindow, l"
-            "$mod SHIFT, l, movewindow, r"
-            "$mod SHIFT, k, movewindow, u"
-            "$mod SHIFT, j, movewindow, d"
+          "$mod SHIFT, h, movewindow, l"
+          "$mod SHIFT, l, movewindow, r"
+          "$mod SHIFT, k, movewindow, u"
+          "$mod SHIFT, j, movewindow, d"
 
-            "$mod, mouse_up, workspace, e+1"
-            "$mod, mouse_down, workspace, e-1"
+          "$mod, mouse_up, workspace, e+1"
+          "$mod, mouse_down, workspace, e-1"
 
-            ", XF86AudioRaiseVolume, exec, pamixer -i 5"
-            ", XF86AudioLowerVolume, exec, pamixer -d 5"
-            ", XF86AudioMute, exec, pamixer -t"
-            ", XF86AudioStop, exec, playerctl stop"
-            ", XF86AudioPrev, exec, playerctl previous"
-            ", XF86AudioPlay, exec, playerctl play-pause"
-            "$mod_SHIFT, F10, exec, playerctl play-pause"
-            ", XF86AudioNext, exec, playerctl next"
-            "SHIFT, XF86AudioPrev, exec, playerctld shift"
-            "SHIFT, XF86AudioPlay, exec, playerctl -a play-pause"
-            "SHIFT, XF86AudioNext, exec, playerctld unshift"
-            ", XF86MonBrightnessUp, exec, brightnessctl s +10%"
-            ", XF86MonBrightnessDown, exec, brightnessctl s 10%-"
+          ", XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"
+          ", XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
+          ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+          "SHIFT, XF86AudioRaiseVolume, exec, playerctl next"
+          "SHIFT, XF86AudioLowerVolume, exec, playerctl previous"
+          "SHIFT, XF86AudioMute, exec, playerctl play-pause"
+          ", XF86AudioStop, exec, playerctl stop"
+          ", XF86AudioPrev, exec, playerctl previous"
+          ", XF86AudioPlay, exec, playerctl play-pause"
+          "$mod_SHIFT, F10, exec, playerctl play-pause"
+          ", XF86AudioNext, exec, playerctl next"
+          "SHIFT, XF86AudioPrev, exec, playerctld shift"
+          "SHIFT, XF86AudioPlay, exec, playerctl -a play-pause"
+          "SHIFT, XF86AudioNext, exec, playerctld unshift"
+          ", XF86MonBrightnessUp, exec, brightnessctl s +10%"
+          ", XF86MonBrightnessDown, exec, brightnessctl s 10%-"
 
-            ", XF86AudioMedia, exec, sleep 1 && hyprctl dispatch dpms off"
-            "SHIFT, XF86AudioMedia, exec, sleep 1 && hyprctl dispatch dpms on"
-            "$mod_SHIFT, F11, exec, sleep 1 && hyprctl dispatch dpms off"
-            "$mod, F11, exec, sleep 1 && hyprctl dispatch dpms on"
-            ", Print, exec, grimshot copy area"
-          ]
-          ++ (
-            # workspaces
-            builtins.concatLists (
-              builtins.genList (
-                i:
-                let
-                  ws = i + 1;
-                in
-                [
-                  "$mod, ${toString ws}, workspace, ${toString ws}"
-                  "$mod SHIFT, ${toString ws}, movetoworkspace, ${toString ws}"
-                ]
-              ) 9
-              ++ [
-                [
-                  "$mod, 0, workspace, 10"
-                  "$mod SHIFT, 0, movetoworkspace, 10"
-                ]
+          ", XF86AudioMedia, exec, sleep 1 && hyprctl dispatch dpms off"
+          "SHIFT, XF86AudioMedia, exec, sleep 1 && hyprctl dispatch dpms on"
+          "$mod_SHIFT, F11, exec, sleep 1 && hyprctl dispatch dpms off"
+          "$mod, F11, exec, sleep 1 && hyprctl dispatch dpms on"
+          ", Print, exec, grimshot copy area"
+        ]
+        ++ (
+          # workspaces
+          builtins.concatLists (
+            builtins.genList (
+              i:
+              let
+                ws = i + 1;
+              in
+              [
+                "$mod, ${toString ws}, workspace, ${toString ws}"
+                "$mod SHIFT, ${toString ws}, movetoworkspace, ${toString ws}"
               ]
-            )
-          );
+            ) 9
+            ++ [
+              [
+                "$mod, 0, workspace, 10"
+                "$mod SHIFT, 0, movetoworkspace, 10"
+              ]
+            ]
+          )
+        );
         exec-once = [
           "uwsm app -- eww open bar"
           "[workspace 1 silent] uwsm app -- ${term}"
@@ -191,7 +193,6 @@ with lib;
     home.packages = with pkgs; [
       gammastep
       networkmanagerapplet
-      pamixer
       pavucontrol
       playerctl
       sway-contrib.grimshot
