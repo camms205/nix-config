@@ -59,13 +59,13 @@
               :onchange "echo {} > /tmp/gammastep.fifo"
               ))))
 
-(defpoll volume :interval "1s" :initial 0 "pamixer --get-volume")
+(defpoll volume :interval "1s" :initial 0.00 "wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{print $2}' | tr -d '.'")
 (defwidget audio []
   (box :class "audio" :orientation "h" :space-evenly false :halign "end"
     (eventbox :onclick "pkill pavucontrol || hyprctl dispatch exec pavucontrol"
     (metric :label "Audio "
             :value volume
-            :onchange "pamixer --set-volume {}"))))
+            :onchange "wpctl set-volume @DEFAULT_AUDIO_SINK@ {}%"))))
 
 (defwidget metric [label value onchange]
   (box :orientation "h"
