@@ -10,7 +10,7 @@ let
 in
 with lib;
 {
-  imports = [ inputs.nix-index-database.hmModules.nix-index ];
+  imports = [ inputs.nix-index-database.homeModules.nix-index ];
 
   options.camms.sh.enable = mkEnableOption "sh";
 

@@ -26,10 +26,7 @@
     nixos-wsl.inputs.nixpkgs.follows = "nixpkgs";
 
     stylix.url = "github:danth/stylix";
-    stylix.inputs = {
-      home-manager.follows = "home-manager";
-      nixpkgs.follows = "nixpkgs";
-    };
+    stylix.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =

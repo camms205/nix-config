@@ -28,6 +28,7 @@
   fileSystems."/media/pics".neededForBoot = false;
 
   services = {
+    usbmuxd.enable = true;
     immich = {
       host = "0.0.0.0";
       enable = true;
@@ -58,6 +59,8 @@
   environment.systemPackages = with pkgs; [
     curl
     vim
+    libimobiledevice
+    ifuse
   ];
 
   system.stateVersion = "24.05";
