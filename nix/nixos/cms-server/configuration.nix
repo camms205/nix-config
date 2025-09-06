@@ -8,6 +8,7 @@
   imports = [
     ./disko.nix
     inputs.self.nixosModules.default
+    inputs.copyparty.nixosModules.default
   ];
 
   camms = {
@@ -28,7 +29,6 @@
   fileSystems."/media/pics".neededForBoot = false;
 
   services = {
-    usbmuxd.enable = true;
     immich = {
       host = "0.0.0.0";
       enable = true;
@@ -57,10 +57,9 @@
   networking.hostName = "cms-server";
 
   environment.systemPackages = with pkgs; [
+    copyparty
     curl
     vim
-    libimobiledevice
-    ifuse
   ];
 
   system.stateVersion = "24.05";

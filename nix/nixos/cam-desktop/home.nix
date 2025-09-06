@@ -12,6 +12,10 @@ with lib;
     };
   };
 
+  services = {
+    dunst.settings.global.monitor = 1;
+  };
+
   home.packages = with pkgs; [
     blender-hip
     zoom-us

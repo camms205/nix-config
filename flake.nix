@@ -27,6 +27,8 @@
 
     stylix.url = "github:danth/stylix";
     stylix.inputs.nixpkgs.follows = "nixpkgs";
+
+    copyparty.url = "github:9001/copyparty";
   };
 
   outputs =
@@ -35,7 +37,10 @@
       { outputs, ... }@flake:
       {
         inherit inputs;
-        withOverlays = [ (_: _: { inherit (outputs) nixosConfigurations; }) ];
+        withOverlays = [
+          (_: _: { inherit (outputs) nixosConfigurations; })
+          inputs.copyparty.overlays.default
+        ];
       }
     );
 }

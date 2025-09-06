@@ -101,6 +101,7 @@ in
   };
 
   environment.systemPackages = with pkgs; [
+    copyparty
     brightnessctl
     dive
     distrobox

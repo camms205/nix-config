@@ -14,9 +14,8 @@ with lib;
 
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
-      # blender-hip
       discord
-      jellyfin-media-player
+      # jellyfin-media-player
       libreoffice
       kdePackages.okular
       prismlauncher

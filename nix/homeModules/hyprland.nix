@@ -187,6 +187,14 @@ with lib;
 
         bind=ALT, r, submap, reset
         submap=reset
+
+        monitorv2 {
+          output = HDMI-A-1
+          mode = 3840x2160@60
+          position = auto
+          scale = 2
+          addreserved = 300, 0, 450, 0
+        }
       '';
     };
 
