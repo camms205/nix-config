@@ -16,10 +16,7 @@ with lib;
     nix = {
       settings = {
         auto-optimise-store = true;
-        experimental-features = [
-          "nix-command"
-          "flakes"
-        ];
+        eval-cores = 0;
         trusted-users = [
           "@wheel"
         ];
@@ -45,6 +42,7 @@ with lib;
         (final: prev: {
           inherit (inputs.self.packages.${prev.stdenv.hostPlatform.system}) riven riven-frontend zurg;
         })
+        inputs.copyparty.overlays.default
       ];
     };
 

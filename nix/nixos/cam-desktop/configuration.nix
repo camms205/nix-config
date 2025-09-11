@@ -80,11 +80,6 @@ in
     steam = {
       enable = true;
       extraCompatPackages = with pkgs; [ proton-ge-bin ];
-      gamescopeSession.enable = true;
-      gamescopeSession.args = [
-        "--hdr-enabled"
-        "--adaptive-sync"
-      ];
     };
     virt-manager.enable = true;
   };
@@ -101,14 +96,13 @@ in
   };
 
   environment.systemPackages = with pkgs; [
-    copyparty
-    brightnessctl
-    dive
-    distrobox
     adwaita-icon-theme
+    brightnessctl
+    distrobox
     helvum
     podman-compose
     podman-tui
+    steamtinkerlaunch
     vim
     virtiofsd
     xfce.xfce4-icon-theme

@@ -6,6 +6,8 @@
     flakelight.url = "github:nix-community/flakelight";
     flakelight.inputs.nixpkgs.follows = "nixpkgs";
 
+    determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
+
     nixos-facter-modules.url = "github:numtide/nixos-facter-modules";
 
     home-manager.url = "github:nix-community/home-manager";
@@ -39,7 +41,6 @@
         inherit inputs;
         withOverlays = [
           (_: _: { inherit (outputs) nixosConfigurations; })
-          inputs.copyparty.overlays.default
         ];
       }
     );

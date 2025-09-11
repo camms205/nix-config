@@ -12,7 +12,9 @@ with lib;
 {
   imports = [
     inputs.disko.nixosModules.disko
-  ] ++ builtins.attrValues (builtins.removeAttrs inputs.self.nixosModules [ "default" ]);
+    inputs.determinate.nixosModules.default
+  ]
+  ++ builtins.attrValues (builtins.removeAttrs inputs.self.nixosModules [ "default" ]);
 
   options.camms.default.enable = mkEnableOption "Default options" // {
     default = true;
