@@ -12,7 +12,6 @@ with lib;
 {
   imports = [
     inputs.disko.nixosModules.disko
-    inputs.determinate.nixosModules.default
   ]
   ++ builtins.attrValues (builtins.removeAttrs inputs.self.nixosModules [ "default" ]);
 

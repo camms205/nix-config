@@ -63,7 +63,6 @@ with lib;
             "workspaces, 1, 3, default, fade"
           ];
         };
-        gestures.workspace_swipe = "no";
         misc = {
           disable_hyprland_logo = true;
           disable_splash_rendering = true;
@@ -204,7 +203,6 @@ with lib;
       pavucontrol
       playerctl
       sway-contrib.grimshot
-      tigervnc
       waypipe
       wl-clipboard
     ];
@@ -213,7 +211,7 @@ with lib;
       playerctld.enable = true;
       blueman-applet.enable = true;
       hypridle = {
-        enable = true;
+        enable = false;
         settings = {
           general = {
             lock_cmd = "pidof hyprlock || hyprlock";

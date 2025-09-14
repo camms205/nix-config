@@ -9,6 +9,7 @@
     ./disko.nix
     inputs.self.nixosModules.default
     inputs.copyparty.nixosModules.default
+    inputs.determinate.nixosModules.default
   ];
 
   camms = {
@@ -38,8 +39,10 @@
     };
     xserver.videoDrivers = [ "nvidia" ];
     logind = {
-      lidSwitch = "ignore";
-      lidSwitchDocked = "ignore";
+      settings.Login = {
+        HandleLidSwitch = "ignore";
+        HandleLidSwitchDocked = "ignore";
+      };
     };
   };
 

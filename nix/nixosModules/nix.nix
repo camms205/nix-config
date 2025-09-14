@@ -16,7 +16,6 @@ with lib;
     nix = {
       settings = {
         auto-optimise-store = true;
-        eval-cores = 0;
         trusted-users = [
           "@wheel"
         ];

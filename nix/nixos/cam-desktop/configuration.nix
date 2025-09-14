@@ -13,6 +13,7 @@ in
   imports = [
     ./disko.nix
     inputs.self.nixosModules.default
+    inputs.determinate.nixosModules.default
   ];
 
   facter.reportPath = ./facter.json;
@@ -80,6 +81,7 @@ in
     steam = {
       enable = true;
       extraCompatPackages = with pkgs; [ proton-ge-bin ];
+      protontricks.enable = true;
     };
     virt-manager.enable = true;
   };
@@ -102,7 +104,6 @@ in
     helvum
     podman-compose
     podman-tui
-    steamtinkerlaunch
     vim
     virtiofsd
     xfce.xfce4-icon-theme

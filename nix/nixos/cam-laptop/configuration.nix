@@ -10,6 +10,7 @@ with lib;
   imports = [
     ./hardware-configuration.nix
     inputs.self.nixosModules.default
+    inputs.determinate.nixosModules.default
   ];
 
   camms = {
