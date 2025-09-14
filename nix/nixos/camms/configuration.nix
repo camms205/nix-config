@@ -51,6 +51,11 @@ with lib;
     vim
   ];
 
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
+
   documentation.man.generateCaches = false;
 
   system.stateVersion = "24.05";
