@@ -101,6 +101,10 @@ with lib;
           "$mod, k, movefocus, u"
           "$mod, j, movefocus, d"
 
+          "$mod SHIFT, left, movewindow, l"
+          "$mod SHIFT, right, movewindow, r"
+          "$mod SHIFT, up, movewindow, u"
+          "$mod SHIFT, down, movewindow, d"
           "$mod SHIFT, h, movewindow, l"
           "$mod SHIFT, l, movewindow, r"
           "$mod SHIFT, k, movewindow, u"
@@ -167,7 +171,7 @@ with lib;
         bind=$mod, Delete, submap, reset
         submap=reset
 
-        bind=ALT, r, submap, resize
+        bind=$mod ALT, r, submap, resize
         submap=resize
         binde=, l, resizeactive, 10 0
         binde=, h, resizeactive, -10 0
@@ -184,7 +188,8 @@ with lib;
         binde=SHIFT, k, moveactive, 0 -10
         binde=SHIFT, j, moveactive, 0 10
 
-        bind=ALT, r, submap, reset
+        bind=, escape, submap, reset
+        bind=$mod ALT, r, submap, reset
         submap=reset
 
         monitorv2 {
