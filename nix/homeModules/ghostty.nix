@@ -18,7 +18,7 @@ with lib;
     ];
 
     xdg.configFile."ghostty/config".text = ''
-      theme = catppuccin-mocha
+      theme = Catppuccin Mocha
       font-family = FiraCode Nerd Font
       window-decoration = false
     '';

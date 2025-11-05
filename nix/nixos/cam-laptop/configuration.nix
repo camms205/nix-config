@@ -72,17 +72,20 @@ with lib;
     helvum
     vim
     xfce.xfce4-icon-theme
+    ifuse
+    libimobiledevice
   ];
   fonts.packages = with pkgs; [
     corefonts
     noto-fonts
     noto-fonts-cjk-sans
-    noto-fonts-emoji
+    noto-fonts-color-emoji
     nerd-fonts.fira-code
   ];
 
   security.rtkit.enable = true;
   services = {
+    usbmuxd.enable = true;
     blueman.enable = true;
     fprintd.enable = true;
     fwupd.enable = true;

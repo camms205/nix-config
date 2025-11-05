@@ -44,6 +44,10 @@ with lib;
         enable = true;
         settings.vim_keys = true;
       };
+      delta = {
+        enable = true;
+        enableGitIntegration = true;
+      };
       direnv = {
         enable = true;
         nix-direnv.enable = true;
@@ -67,10 +71,11 @@ with lib;
       fzf.enable = true;
       git = {
         enable = true;
-        delta.enable = true;
-        userName = "camms205";
-        userEmail = "camms205@proton.me";
-        extraConfig = {
+        settings = {
+          user = {
+            name = "camms205";
+            email = "camms205@proton.me";
+          };
           init.defaultBranch = "main";
         };
       };
