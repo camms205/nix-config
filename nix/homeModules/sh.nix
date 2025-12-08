@@ -23,13 +23,18 @@ with lib;
       entr
       eza
       fd
+      feh
       just
+      libnotify
+      mpv
       nix-output-monitor
       nix-tree
       parallel
       ripdrag
+      tealdeer
       texliveSmall
       unzip
+      wev
     ];
 
     programs = {

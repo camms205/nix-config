@@ -72,6 +72,7 @@ in
   };
 
   programs = {
+    niri.enable = true;
     hyprland = {
       enable = true;
       withUWSM = true;

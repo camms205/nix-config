@@ -32,6 +32,14 @@
     stylix.inputs.nixpkgs.follows = "nixpkgs";
 
     copyparty.url = "github:9001/copyparty";
+
+    niri.url = "github:sodiboo/niri-flake";
+    niri.inputs.nixpkgs.follows = "nixpkgs";
+    dgop.url = "github:AvengeMedia/dgop";
+    dgop.inputs.nixpkgs.follows = "nixpkgs";
+    dankMaterialShell.url = "github:AvengeMedia/DankMaterialShell";
+    dankMaterialShell.inputs.nixpkgs.follows = "nixpkgs";
+    dankMaterialShell.inputs.dgop.follows = "dgop";
   };
 
   outputs =

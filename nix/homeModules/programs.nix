@@ -28,7 +28,6 @@ with lib;
     };
 
     services = {
-      dunst.enable = true;
       easyeffects.enable = true;
       syncthing.enable = true;
     };

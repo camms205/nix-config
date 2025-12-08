@@ -82,9 +82,9 @@ with lib;
           "$mod, Q, exec, uwsm app -- ${term}"
           "$mod, RETURN, exec, uwsm app -- alacritty"
           "$mod, C, killactive, "
-          "$mod, M, exit, "
+          "$mod SHIFT, M, exit, "
           "$mod, E, exec, uwsm app -- dolphin"
-          "$mod, V, togglefloating, "
+          "$mod SHIFT, V, togglefloating, "
           "$mod, F, fullscreen"
           "$mod, R, exec, fuzzel --launch-prefix='uwsm app --'"
           "$mod SHIFT, R, exec, wofi -d -o DP-3 | xargs hyprctl dispatch exec uwsm app --"
@@ -113,9 +113,6 @@ with lib;
           "$mod, mouse_up, workspace, e+1"
           "$mod, mouse_down, workspace, e-1"
 
-          ", XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"
-          ", XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
-          ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
           "SHIFT, XF86AudioRaiseVolume, exec, playerctl next"
           "SHIFT, XF86AudioLowerVolume, exec, playerctl previous"
           "SHIFT, XF86AudioMute, exec, playerctl play-pause"
@@ -127,14 +124,25 @@ with lib;
           "SHIFT, XF86AudioPrev, exec, playerctld shift"
           "SHIFT, XF86AudioPlay, exec, playerctl -a play-pause"
           "SHIFT, XF86AudioNext, exec, playerctld unshift"
-          ", XF86MonBrightnessUp, exec, brightnessctl s +10%"
-          ", XF86MonBrightnessDown, exec, brightnessctl s 10%-"
 
           ", XF86AudioMedia, exec, sleep 1 && hyprctl dispatch dpms off"
           "SHIFT, XF86AudioMedia, exec, sleep 1 && hyprctl dispatch dpms on"
           "$mod_SHIFT, F11, exec, sleep 1 && hyprctl dispatch dpms off"
           "$mod, F11, exec, sleep 1 && hyprctl dispatch dpms on"
           ", Print, exec, grimshot copy area"
+
+          # Application Launchers
+          "$mod, space, exec, dms ipc call spotlight toggle"
+          "$mod, V, exec, dms ipc call clipboard toggle"
+          "$mod, M, exec, dms ipc call processlist focusOrToggle"
+          "$mod, comma, exec, dms ipc call settings focusOrToggle"
+          "$mod, N, exec, dms ipc call notifications toggle"
+          "$mod, Y, exec, dms ipc call dankdash wallpaper"
+          "$mod, TAB, exec, dms ipc call hypr toggleOverview"
+
+          # Security
+          "$mod ALT, L, exec, dms ipc call lock lock"
+
         ]
         ++ (
           # workspaces
@@ -157,8 +165,20 @@ with lib;
             ]
           )
         );
+        bindel = [
+          # Audio Controls
+          ", XF86AudioRaiseVolume, exec, dms ipc call audio increment 3"
+          ", XF86AudioLowerVolume, exec, dms ipc call audio decrement 3"
+          ", XF86AudioMute, exec, dms ipc call audio mute"
+
+          # Brightness Controls
+          ", XF86MonBrightnessUp, exec, dms ipc call brightness increment 5"
+          ", XF86MonBrightnessDown, exec, dms ipc call brightness decrement 5"
+        ];
         exec-once = [
-          "uwsm app -- eww open bar"
+          # "uwsm app -- eww open bar"
+          "uwsm app -- dms run"
+          "bash -c \"wl-paste --watch cliphist store &\""
           "[workspace 1 silent] uwsm app -- ${term}"
           "[workspace 2 silent] uwsm app -- brave"
           #"[workspace 3 silent] uwsm app -- obsidian"
@@ -240,7 +260,7 @@ with lib;
           ];
         };
       };
-      hyprpaper.enable = true;
+      # hyprpaper.enable = true;
       hyprpolkitagent.enable = true;
       udiskie = {
         enable = true;
@@ -251,9 +271,12 @@ with lib;
 
     programs = {
       eww = mkIf (osConfig.camms.variables.ewwDir or null != null) {
-        enable = true;
+        enable = false;
         package = pkgs.eww;
         configDir = osConfig.camms.variables.ewwDir;
+      };
+      dankMaterialShell = {
+        enable = true;
       };
       fuzzel = {
         enable = true;

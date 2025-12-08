@@ -10,7 +10,11 @@ let
 in
 with lib;
 {
-  imports = builtins.attrValues (builtins.removeAttrs inputs.self.homeModules [ "default" ]);
+  imports = [
+    inputs.dankMaterialShell.homeModules.dankMaterialShell.default
+    inputs.dankMaterialShell.homeModules.dankMaterialShell.niri
+  ]
+  ++ builtins.attrValues (builtins.removeAttrs inputs.self.homeModules [ "default" ]);
 
   options.camms.default.enable = mkOption {
     type = types.bool;
