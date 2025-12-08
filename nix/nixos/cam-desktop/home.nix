@@ -6,7 +6,7 @@
 with lib;
 {
   camms = {
-    # niri.enable = true;
+    niri.enable = true;
     hyprland = {
       enable = true;
       hdr = true;

@@ -26,7 +26,6 @@ with lib;
     camms = mkIf cfg.enable {
       sh.enable = mkDefault true;
       helix.enable = mkDefault true;
-      stylix.enable = mkDefault true;
     };
     home.stateVersion = "24.05";
     fonts.fontconfig.enable = true;

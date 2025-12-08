@@ -17,7 +17,6 @@ with lib;
       home.enable = mkDefault true;
       impermanence.enable = mkDefault true;
       services.keyd.enable = mkDefault true;
-      stylix.enable = mkDefault true;
     };
   };
 }
