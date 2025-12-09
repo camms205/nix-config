@@ -25,6 +25,7 @@ in
     };
     archetypes.workstation.enable = true;
     home.path = ./home.nix;
+    niri.enable = true;
     user = {
       name = user;
       extraGroups = [
@@ -72,7 +73,6 @@ in
   };
 
   programs = {
-    niri.enable = true;
     hyprland = {
       enable = true;
       withUWSM = true;
