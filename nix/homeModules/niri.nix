@@ -18,10 +18,10 @@ with lib;
   };
 
   config = mkMerge [
-    {
+    (mkIf (!cfg.enable) {
       programs.niri.settings = mkForce { };
       programs.niri.config = mkForce null;
-    }
+    })
     (mkIf cfg.enable {
       camms = {
         browser.enable = mkDefault true;
@@ -31,6 +31,7 @@ with lib;
       };
 
       home.packages = with pkgs; [
+        gamescope
         pavucontrol
         playerctl
         sway-contrib.grimshot
@@ -52,21 +53,45 @@ with lib;
         };
         niri = {
           settings = with config.lib.niri.actions; {
-            outputs."ASUSTek COMPUTER INC PG32UCDM S6LMQS070640" = {
-              scale = 2;
-              mode = {
-                width = 3840;
-                height = 2160;
+            prefer-no-csd = true;
+            outputs = {
+              "ASUSTek COMPUTER INC PG32UCDM S6LMQS070640" = {
+                scale = 2;
+                mode = {
+                  width = 3840;
+                  height = 2160;
+                };
+                position = {
+                  x = 0;
+                  y = 0;
+                };
               };
-              position = {
-                x = 0;
-                y = 0;
+              "Samsung Electric Company SAMSUNG 0x01000E00" = {
+                scale = 2;
+                mode = {
+                  width = 3840;
+                  height = 2160;
+                };
+                position = {
+                  x = 1920;
+                  y = 0;
+                };
               };
             };
-            environment = {
-              "GDK_SCALE" = "1.5";
-              "XCURSOR_SIZE" = "24";
+            input.focus-follows-mouse.enable = true;
+            layout = {
+              gaps = 8;
+              struts = {
+                left = 64;
+                right = 64;
+                top = 0;
+                bottom = 0;
+              };
             };
+            # environment = {
+            #   "GDK_SCALE" = "1.5";
+            #   "XCURSOR_SIZE" = "24";
+            # };
             binds = {
               "Mod+Shift+Slash".action = show-hotkey-overlay;
               "Mod+T".action = spawn "ghostty";
@@ -129,6 +154,9 @@ with lib;
               "Mod+Shift+U".action = move-workspace-down;
               "Mod+Shift+I".action = move-workspace-up;
 
+              "Mod+BracketLeft".action = consume-or-expel-window-left;
+              "Mod+BracketRight".action = consume-or-expel-window-right;
+
               "Mod+1".action = focus-workspace 1;
               "Mod+2".action = focus-workspace 2;
               "Mod+3".action = focus-workspace 3;
@@ -166,6 +194,10 @@ with lib;
               "Mod+Shift+E".action = quit;
 
               "Mod+Shift+P".action = power-off-monitors;
+            };
+            xwayland-satellite = {
+              enable = true;
+              path = "${lib.getExe pkgs.xwayland-satellite}";
             };
           };
         };

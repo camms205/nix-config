@@ -23,7 +23,10 @@ with lib;
 
   config = mkMerge [
     (mkIf (cfg.manager == "NetworkManager") {
-      networking.networkmanager.enable = true;
+      networking.networkmanager = {
+        enable = true;
+        plugins = [ pkgs.networkmanager-openvpn ];
+      };
       systemd.network.wait-online.enable = false;
       camms.user.extraGroups = [
         "networkmanager"
