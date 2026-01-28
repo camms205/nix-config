@@ -18,7 +18,7 @@ with lib;
   };
 
   home.packages = with pkgs; [
-    blender-hip
+    # blender
     zoom-us
   ];
 }
