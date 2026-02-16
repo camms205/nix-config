@@ -55,44 +55,31 @@ with lib;
             formatter.command = "clang-format";
             language-servers = [
               "clangd"
-              # "helix-gpt"
             ];
           }
           {
             name = "nix";
             auto-format = true;
-            formatter.command = "${lib.getExe pkgs.nixfmt-rfc-style}";
+            formatter.command = "${lib.getExe pkgs.nixfmt}";
             language-servers = [
               "nil"
               "nixd"
-              # "helix-gpt"
             ];
           }
           {
             name = "rust";
             language-servers = [
               "rust-analyzer"
-              # "helix-gpt"
             ];
           }
           {
             name = "wgsl";
             language-servers = [
               "wgsl-analyzer"
-              # "helix-gpt"
             ];
           }
         ];
         language-server = {
-          helix-gpt =
-            let
-              helix-gpt = pkgs.writeShellScriptBin "helix-gpt" ''
-                env -S $(cat /run/secrets/copilot_api_key) ${lib.getExe pkgs.helix-gpt}
-              '';
-            in
-            {
-              command = "${lib.getExe helix-gpt}";
-            };
           rust-analyzer.config.checkOnSave.command = "clippy";
           nil.command = "${lib.getExe pkgs.nil}";
           nixd = {

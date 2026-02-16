@@ -110,7 +110,7 @@ in
     podman-tui
     vim
     virtiofsd
-    xfce.xfce4-icon-theme
+    xfce4-icon-theme
   ];
   fonts.packages = with pkgs; [
     corefonts

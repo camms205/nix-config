@@ -94,6 +94,7 @@ with lib;
       yazi = {
         enable = true;
         enableFishIntegration = true;
+        shellWrapperName = "yy";
       };
       zellij = {
         enable = true;

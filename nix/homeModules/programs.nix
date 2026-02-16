@@ -19,7 +19,7 @@ with lib;
       libreoffice
       kdePackages.okular
       prismlauncher
-      wineWowPackages.stable
+      wineWow64Packages.stable
     ];
 
     programs = {

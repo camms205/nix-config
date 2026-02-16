@@ -275,7 +275,7 @@ with lib;
         package = pkgs.eww;
         configDir = osConfig.camms.variables.ewwDir;
       };
-      dankMaterialShell = {
+      dank-material-shell = {
         enable = true;
       };
       fuzzel = {

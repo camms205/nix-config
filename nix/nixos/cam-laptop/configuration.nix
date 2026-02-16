@@ -71,7 +71,7 @@ with lib;
     brightnessctl
     helvum
     vim
-    xfce.xfce4-icon-theme
+    xfce4-icon-theme
     ifuse
     libimobiledevice
   ];
