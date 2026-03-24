@@ -15,6 +15,7 @@ with lib;
   options.camms.wsl.enable = mkEnableOption "wsl";
 
   config = mkIf cfg.enable {
+    camms.networking.manager = "systemd";
     wsl = {
       enable = true;
       defaultUser = config.camms.user.name;
