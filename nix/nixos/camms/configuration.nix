@@ -43,7 +43,6 @@ with lib;
 
   services = {
     adguardhome.enable = true;
-    resolved.enable = false;
   };
 
   environment.systemPackages = with pkgs; [

@@ -39,7 +39,9 @@ with lib;
         socat
         sshfs
         wget
+        wireguard-tools
       ];
+      services.resolved.enable = true;
     }
   ];
 }

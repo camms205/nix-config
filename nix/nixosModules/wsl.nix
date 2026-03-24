@@ -20,7 +20,5 @@ with lib;
       defaultUser = config.camms.user.name;
       useWindowsDriver = true;
     };
-
-    services.resolved.enable = false;
   };
 }
