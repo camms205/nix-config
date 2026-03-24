@@ -16,5 +16,6 @@ with lib;
       };
       user.enable = mkDefault true;
     };
+    services.atd.enable = mkDefault true;
   };
 }
