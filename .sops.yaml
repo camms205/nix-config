@@ -7,6 +7,7 @@ keys:
   - &machine_nixos_wsl age15sehvxxhnusnhs486we2sznz4736prpf4g5r7ynrycng5xk7f5yss670au
   - &machine_camms age1jv72xhzl6scs50q8k689ughewaum7zznk5la5anuxxfxl3cquqasvpdkwd
   - &machine_cms-server age1wjsewg482wd7dgk04pqspnxyzqjg806zlmmfk8tynar6358yascssl6lg5
+  - &machine_learn21 age1t77pynd4lkh0xxhd7uj97lgmdud6l5smmfeh2wls4wqq6mw83dkseq3uhj
 creation_rules:
   - path_regex: secrets/[^/]+\.(yaml|json|env|ini)$
     key_groups:
@@ -19,3 +20,4 @@ creation_rules:
           - *machine_nixos_wsl
           - *machine_camms
           - *machine_cms-server
+          - *machine_learn21
