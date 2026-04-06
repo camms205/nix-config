@@ -19,10 +19,6 @@ in
   facter.reportPath = ./facter.json;
 
   camms = {
-    facter = {
-      enable = true;
-      path = ./facter.json;
-    };
     archetypes.workstation.enable = true;
     home.path = ./home.nix;
     niri.enable = true;
@@ -39,9 +35,6 @@ in
       flakeDir = "/home/cameron/.dotfiles/nix";
     };
   };
-
-  boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
-  nix.settings.extra-platforms = config.boot.binfmt.emulatedSystems;
 
   networking = {
     hostName = "cam-desktop";
