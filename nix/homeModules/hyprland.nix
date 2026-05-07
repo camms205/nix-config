@@ -35,9 +35,6 @@ with lib;
           "desc:ASUSTek COMPUTER INC PG32UCDM S6LMQS070640, 3840x2160@240, 0x0, 2, bitdepth, 10, vrr, 2"
           ", 1920x1080@60, auto, 1"
         ];
-        experimental = mkIf cfg.hdr {
-          xx_color_management_v4 = true;
-        };
         xwayland.force_zero_scaling = true;
         env = [
           "GDK_SCALE, 1.5"
@@ -67,11 +64,8 @@ with lib;
           disable_hyprland_logo = true;
           disable_splash_rendering = true;
         };
-        windowrulev2 = [
-          "float, title:^(Picture in picture)$"
-          "pin, title:^(Picture in picture)$"
-          "size 480 270, title:^(Picture in picture)$"
-          "move 100%-482 100%-272, title:^(Picture in picture)$"
+        windowrule = [
+          "match:title ^(Picture in picture)$, float on, pin on, size 480 270, move 100%-482 100%-272"
         ];
         bindm = [
           "$mod, mouse:272, movewindow"
