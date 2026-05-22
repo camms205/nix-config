@@ -105,7 +105,7 @@ in
     adwaita-icon-theme
     brightnessctl
     distrobox
-    helvum
+    crosspipe
     podman-compose
     podman-tui
     vim

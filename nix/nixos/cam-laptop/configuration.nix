@@ -69,7 +69,7 @@ with lib;
   environment.systemPackages = with pkgs; [
     adwaita-icon-theme
     brightnessctl
-    helvum
+    crosspipe
     vim
     xfce4-icon-theme
     ifuse
