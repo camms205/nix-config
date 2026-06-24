@@ -21,7 +21,7 @@ with lib;
     ];
     user.name = "cameron";
     variables = {
-      ewwDir = ./eww;
+      # ewwDir = ./eww;
       flakeDir = "/home/cameron/dotfiles/nix";
     };
   };

@@ -28,16 +28,16 @@ with lib;
     camms.services.riven = {
       enable = true;
       inherit user group;
-      envFile = config.sops.secrets."media/riven.env".path;
+      envFile = config.sops.secrets."media/riven-ts.env".path;
       environment = {
         "PUID" = "${uid}";
         "PGID" = "${gid}";
-        "RIVEN_FORCE_ENV" = "true";
-        "RIVEN_SYMLINK_RCLONE_PATH" = "${path}/remote/realdebrid/torrents";
-        "RIVEN_SYMLINK_LIBRARY_PATH" = "${path}/jellyfin";
-        "RIVEN_DATABASE_HOST" = "postgresql+psycopg2://postgres:postgres@localhost:5433/riven";
-        "RIVEN_UPDATERS_JELLYFIN_URL" = "http://localhost:8096";
-        "RIVEN_CONTENT_OVERSEERR_URL" = "http://localhost:5055";
+        # "RIVEN_FORCE_ENV" = "true";
+        # "RIVEN_SYMLINK_RCLONE_PATH" = "${path}/remote/realdebrid/torrents";
+        # "RIVEN_SYMLINK_LIBRARY_PATH" = "${path}/jellyfin";
+        # "RIVEN_DATABASE_HOST" = "postgresql+psycopg2://postgres:postgres@localhost:5433/riven";
+        # "RIVEN_UPDATERS_JELLYFIN_URL" = "http://localhost:8096";
+        # "RIVEN_CONTENT_OVERSEERR_URL" = "http://localhost:5055";
       };
     };
 
@@ -60,6 +60,7 @@ with lib;
         };
       in
       {
+        "media/riven-ts.env" = file;
         "media/riven.env" = file;
         "media/zurg-config.yml" = file;
       };
@@ -74,64 +75,15 @@ with lib;
     };
 
     systemd = {
-      services =
-        let
-          afterRclone = {
-            after = [ "rclone.service" ];
-            requires = [ "rclone.service" ];
-            partOf = [ "arrs-root.target" ];
-            wantedBy = [ "arrs-root.target" ];
-          };
-        in
-        {
-          "podman-riven" = afterRclone;
-          "podman-riven-db" = afterRclone;
-          "podman-riven-frontend" = afterRclone;
-          "rclone" = {
-            description = "rclone mount for zurg";
-            after = [ "zurg.service" ];
-            requires = [ "zurg.service" ];
-            partOf = [ "arrs-root.target" ];
-            serviceConfig = {
-              Type = "simple";
-              ExecStart = ''
-                ${getExe pkgs.rclone} mount zurg: ${path}/remote/realdebrid --config="/var/lib/zurg/rclone.conf" \
-                  --cache-dir=/tmp/rclone --allow-non-empty --allow-other --umask=002 --dir-cache-time 10s \
-                  --vfs-cache-mode full --vfs-read-chunk-size 8M --vfs-read-chunk-size-limit 2G --buffer-size 16M \
-                  --vfs-cache-max-age 150h --vfs-cache-max-size 20G --vfs-fast-fingerprint --uid ${uid} --gid ${gid}'';
-              Restart = "on-failure";
-            };
-          };
-          "zurg" = {
-            description = "zurg";
-            after = [ "network.target" ];
-            partOf = [ "arrs-root.target" ];
-            serviceConfig = {
-              Type = "simple";
-              User = user;
-              Group = group;
-              ExecStart = "${lib.getExe pkgs.zurg} -c ${config.sops.secrets."media/zurg-config.yml".path}";
-              WorkingDirectory = "/var/lib/zurg";
-              Restart = "on-failure";
-            };
-          };
-          jellyfin = afterRclone;
-          jellyseerr = afterRclone;
-        };
-
-      targets."arrs-root" = {
-        unitConfig.Description = "Root target for arrs stack.";
-        wantedBy = [ "multi-user.target" ];
-      };
-
       # create all paths for mounts
       tmpfiles.rules = [
         "d ${path} - ${user} ${group} -"
-        "d ${path}/jellyfin - ${user} ${group} -"
-        "d ${path}/jellyfin/movies - ${user} ${group} -"
-        "d ${path}/jellyfin/shows - ${user} ${group} -"
-        "d ${path}/remote - ${user} ${group} -"
-        "d ${path}/remote/realdebrid - ${user} ${group} -"
+        "d /tmp/riven/logs - ${user} ${group} -"
+        # "d ${path}/jellyfin - ${user} ${group} -"
+        # "d ${path}/jellyfin/movies - ${user} ${group} -"
+        # "d ${path}/jellyfin/shows - ${user} ${group} -"
+        # "d ${path}/remote - ${user} ${group} -"
+        # "d ${path}/remote/realdebrid - ${user} ${group} -"
       ];
     };
 

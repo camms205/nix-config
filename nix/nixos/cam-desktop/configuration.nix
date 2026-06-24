@@ -25,7 +25,7 @@ in
     };
     archetypes.workstation.enable = true;
     home.path = ./home.nix;
-    niri.enable = true;
+    # niri.enable = true;
     user = {
       name = user;
       extraGroups = [

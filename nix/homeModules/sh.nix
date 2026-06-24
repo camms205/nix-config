@@ -30,6 +30,7 @@ with lib;
       nix-output-monitor
       nix-tree
       parallel
+      pigz
       ripdrag
       tealdeer
       texliveSmall
@@ -60,11 +61,11 @@ with lib;
       fish = {
         enable = true;
         functions = {
-          gi = ''${lib.getExe pkgs.curl} -sL https://www.toptal.com/developers/gitignore/api/$argv'';
+          gi = "${lib.getExe pkgs.curl} -sL https://www.toptal.com/developers/gitignore/api/$argv";
           ts-exit = ''
             tailscale status --peers --json | nix run nixpkgs#jq -- '.ExitNodeStatus.ID as $node_id | .Peer[] | select(.ID==$node_id) | .HostName'
           '';
-          cachix = ''env -S (cat /run/secrets/cachix) cachix $argv'';
+          cachix = "env -S (cat /run/secrets/cachix) cachix $argv";
         };
         shellAliases = {
           diff = "batdiff";

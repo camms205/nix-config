@@ -27,6 +27,8 @@ with lib;
 
     wayland.windowManager.hyprland = {
       enable = true;
+      package = null;
+      portalPackage = null;
       systemd.enable = false;
       settings = {
         "$mod" = "SUPER";
@@ -264,11 +266,11 @@ with lib;
     };
 
     programs = {
-      eww = mkIf (osConfig.camms.variables.ewwDir or null != null) {
-        enable = false;
-        package = pkgs.eww;
-        configDir = osConfig.camms.variables.ewwDir;
-      };
+      # eww = mkIf (osConfig.camms.variables.ewwDir or null != null) {
+      #   enable = false;
+      #   package = pkgs.eww;
+      #   configDir = osConfig.camms.variables.ewwDir;
+      # };
       dank-material-shell = {
         enable = true;
       };

@@ -8,7 +8,6 @@
   imports = [
     ./disko.nix
     inputs.self.nixosModules.default
-    inputs.copyparty.nixosModules.default
     inputs.determinate.nixosModules.default
   ];
 
@@ -60,7 +59,6 @@
   networking.hostName = "cms-server";
 
   environment.systemPackages = with pkgs; [
-    copyparty
     curl
     vim
   ];

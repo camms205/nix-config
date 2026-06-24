@@ -6,7 +6,7 @@
 with lib;
 {
   camms = {
-    niri.enable = true;
+    # niri.enable = true;
     hyprland = {
       enable = true;
       hdr = true;
@@ -19,6 +19,7 @@ with lib;
 
   home.packages = with pkgs; [
     # blender
+    intiface-central
     zoom-us
   ];
 }
