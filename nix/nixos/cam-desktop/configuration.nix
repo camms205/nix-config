@@ -79,6 +79,11 @@ in
     };
     uwsm.enable = true;
     coolercontrol.enable = true;
+    gamescope = {
+      enable = true;
+      enableWsi = true;
+      capSysNice = false;
+    };
     gnome-terminal.enable = true;
     dconf.enable = true;
     nm-applet.enable = true;
@@ -106,6 +111,8 @@ in
     brightnessctl
     distrobox
     crosspipe
+    limo
+    mangohud
     podman-compose
     podman-tui
     vim
