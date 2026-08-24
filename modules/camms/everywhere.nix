@@ -5,6 +5,7 @@
     includes = [
       den.provides.primary-user
       camms.nix-index
+      camms.helix
     ];
   };
 }

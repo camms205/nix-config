@@ -1,9 +1,12 @@
 { ... }:
 {
   camms.hyprland = {
-    nixos.programs.hyprland = {
-      enable = true;
-      withUWSM = true;
+    nixos = {
+      programs.uwsm.enable = true;
+      programs.hyprland = {
+        enable = true;
+        withUWSM = true;
+      };
     };
 
     homeManager = { pkgs, ... }: {

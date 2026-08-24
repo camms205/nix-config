@@ -1,18 +1,6 @@
+{ ... }:
 {
-  config,
-  lib,
-  inputs,
-  pkgs,
-  ...
-}:
-let
-  cfg = config.camms.ghostty;
-in
-with lib;
-{
-  options.camms.ghostty.enable = mkEnableOption "ghostty";
-
-  config = mkIf cfg.enable {
+  camms.ghostty.homeManager = { pkgs, ... }: {
     home.packages = [
       pkgs.ghostty
     ];

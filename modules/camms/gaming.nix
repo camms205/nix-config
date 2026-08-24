@@ -1,5 +1,12 @@
-{ ... }: {
+{ den, ... }: {
   camms.gaming = {
+    includes = [
+      (den.batteries.unfree [
+        "steam"
+        "steam-unwrapped"
+      ])
+    ];
+
     nixos = { pkgs, ... }: {
       programs = {
         steam = {

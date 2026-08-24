@@ -1,22 +1,14 @@
 {
   lib,
-  pkgs,
-  config,
-  osConfig ? { },
   ...
 }:
-let
-  cfg = config.camms.helix;
-in
 with lib;
 {
-  options.camms.helix.enable = mkEnableOption "helix";
-
-  config = {
+  camms.helix.homeManager = { pkgs, ... }: {
     xdg.configFile."uwsm/env".text = ''
       export EDITOR=hx
     '';
-    programs.helix = mkIf cfg.enable {
+    programs.helix = {
       enable = true;
       defaultEditor = true;
       settings = {
@@ -82,19 +74,7 @@ with lib;
         language-server = {
           rust-analyzer.config.checkOnSave.command = "clippy";
           nil.command = "${lib.getExe pkgs.nil}";
-          nixd = {
-            command = "${lib.getExe pkgs.nixd}";
-            config.nixd.options =
-              let
-                flake = osConfig.camms.variables.flakeDir or "${config.home.homeDirectory}/.config/nix";
-              in
-              {
-                nixos.expr = ''(builtins.getFlake "${flake}").nixosConfigurations.cam-desktop.options'';
-                home-manager.expr = ''(builtins.getFlake "${flake}").homeConfigurations.cameron@cam-desktop.options'';
-                flake-parts.expr = ''(builtins.getFlake "${flake}").debug.options'';
-                flake-parts2.expr = ''(builtins.getFlake "${flake}").currentSystem.options'';
-              };
-          };
+          nixd.command = "${lib.getExe pkgs.nixd}";
         };
       };
     };

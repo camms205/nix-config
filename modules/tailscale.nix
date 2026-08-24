@@ -1,18 +1,6 @@
+{ ... }:
 {
-  lib,
-  pkgs,
-  inputs,
-  config,
-  ...
-}:
-let
-  cfg = config.camms.services.tailscale;
-in
-with lib;
-{
-  options.camms.services.tailscale.enable = mkEnableOption "tailscale";
-
-  config = mkIf cfg.enable {
+  camms.tailscale.nixos = { config, ... }: {
     services.tailscale = {
       enable = true;
       authKeyFile = config.sops.secrets.tailscale.path;
